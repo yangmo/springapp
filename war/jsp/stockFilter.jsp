@@ -12,19 +12,22 @@
           }
       </script>
   </head>
-<body>
+<body style="position:relative;left:30px">
     <%@ include file="TitleAndTabs.jsp" %>
 <script type="text/javascript" src="/springapp/js/canvasjs-1.5.7/source/jquery.canvasjs.js"></script>
 
     <sf:form method = "get" modelAttribute ="paras" action="/springapp/stockFilter/get.html" >
-      highVolumeCriteria:  <sf:input path = "highVolumeCriteria" id="highVolumeCriteria"  style="width: 90px;"/>
-      <br/><br/>
-      oversoldCriteria:  <sf:input path = "oversoldCriteria" id="oversoldCriteria"  style="width: 90px;"/>
-      <br/><br/>
-      recentMaxVolCriteria:  <sf:input path = "recentMaxVolCriteria" id="recentMaxVolCriteria"  style="width: 150px;"/>
+      成交量高于近X交易日平均值Y倍 (x, y): <br/><sf:input class="form-control"  path = "highVolumeCriteria" id="highVolumeCriteria"  style="width: 90px;"/>
+      <br/>
+      超跌低于X日均线Y (x, y): <br/> <sf:input class="form-control"  path = "oversoldCriteria" id="oversoldCriteria"  style="width: 90px;"/>
+      <br/>
+      近X日成交量最高值(x): <br/> <sf:input class="form-control"  path = "recentMaxVolCriteria" id="recentMaxVolCriteria"  style="width: 90px;"/>
             <br/><br/>
-      similarKAverageCriteria: <sf:input path = "similarKAverageCriteria" id="similarKAverageCriteria"  style="width: 90px;"/>
-        <input type="submit" value="Query"  />
+      均线接近:
+      <br/><sf:input class="form-control"  path = "similarKAverageCriteria"
+                                 id="similarKAverageCriteria"  style="width: 150px;"/>
+      <br/>
+        <input class="btn btn-default" type="submit" value="查询"  />
     </sf:form>
 
     <br/>
@@ -35,8 +38,8 @@
 
     <p id="result"> ${json} </p>
     <script type="text/javascript">
-        document.getElementById("result").innerHTML = decodeURIComponent("" + document.getElementById("result").innerHTML);
-        document.getElementById("result").innerHTML = decodeURIComponent("" + document.getElementById("result").innerHTML.replace(new RegExp("\n",'gm'), "<br/>"));
+        document.getElementById("result").innerHTML = decodeURIComponent(document.getElementById("result").innerHTML);
+        document.getElementById("result").innerHTML = decodeURIComponent(document.getElementById("result").innerHTML.replace(new RegExp("\n",'gm'), "<br/>"));
 
     </script>
 </html>

@@ -28,9 +28,9 @@ public class VolumeFilterTask {
     public static void run(){
         int count = 0;
         AndCriteria andCriteria = new AndCriteria();
-    //     andCriteria.appendCriteria(new HighVolumeCriteria("13,2"));
+        andCriteria.appendCriteria(new HighVolumeCriteria("13,2"));
    //     andCriteria.appendCriteria(new RecentMaxVolCriteria("13"));
-       andCriteria.appendCriteria(new OversoldCriteria("60,0.1"));
+      // andCriteria.appendCriteria(new OversoldCriteria("10,0.03"));
      //   andCriteria.appendCriteria(new SimilarKAverageCriteria("30,0.05"))
        //         .appendCriteria(new SimilarKAverageCriteria("5,0.05"));
         for(String stockId : StockNameUtil.getAllStockIds()){

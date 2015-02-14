@@ -26,5 +26,5 @@ public class Constants {
      */
     public static final int INTERVAL = 120;
 
-    public static final String LATEST_DAY = "2015-02-05";
+    public static final String LATEST_DAY = "2015-02-13";
 }

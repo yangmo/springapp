@@ -29,7 +29,13 @@ public class SimilarKAverageCriteria extends Criteria{
     }
 
     public double getDiff(YahooHistory history){
-        List<AverageDatum> list = AverageUtil.getKAverage(history, kAverage, Constants.LATEST_DAY, Constants.LATEST_DAY);
+        List<AverageDatum> list = null;
+        try {
+            list = AverageUtil.getKAverage(history, kAverage, Constants.LATEST_DAY, Constants.LATEST_DAY);
+        } catch (Throwable e) {
+            return 1000.00;
+        }
+
         double average = list.get(0).getVal();
 
         double cur = history.getYahooHistory().get(history.getYahooHistory().size()-1).getClose();

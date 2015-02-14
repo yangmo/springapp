@@ -3,6 +3,7 @@ package com.moyang.controllers;
 import com.moyang.api.Converter;
 import com.moyang.api.YahooAPI;
 import com.moyang.api.YahooDatum;
+import com.moyang.common.JsonSerializer;
 import com.moyang.model.QueryParas;
 import com.moyang.model.StockFilterParas;
 import com.moyang.model.canvasJS.Canvas;

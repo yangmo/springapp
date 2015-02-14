@@ -7,7 +7,7 @@ import com.moyang.api.YahooHistory;
 public class StockUtil {
     public static boolean isAlreadyUpdated(String stockId) {
         YahooHistory history = new YahooHistory(stockId);
-        if(history == null){
+        if(history == null || history.getYahooHistory().size() < 2){
             return false;
         }
         String dateString = history.getYahooHistory().get(history.getYahooHistory().size()-1).getDateStr();

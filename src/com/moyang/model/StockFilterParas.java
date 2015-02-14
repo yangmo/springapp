@@ -42,11 +42,16 @@ public class StockFilterParas {
         StringBuffer result = new StringBuffer();
         int count = 0;
 
+        int  notUpdated = 0;
+
         for(String stockId : StockNameUtil.getAllStockIds()){
             try{
                 if(!StockUtil.isAlreadyUpdated(stockId)){
+
+                    notUpdated++;
                     continue;
                 }
+                System.out.println("stockId " + stockId);
 
                 YahooHistory history = new YahooHistory(stockId);
                 if(andCriteria.meetCriteria(history)){
@@ -56,7 +61,6 @@ public class StockFilterParas {
                     result.append("\n");
                 }
             } catch (Exception e) {
-                continue;
             }
 
         }

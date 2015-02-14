@@ -23,6 +23,10 @@ public class RecentMaxVolCriteria extends Criteria {
 
         long recentVolume = history.getYahooHistory().get(size - 1).getVolume();
 
+        if(size - recentDays <= 1){
+            return false;
+        }
+
         List<YahooDatum> list = history.getYahooHistory().subList(size - recentDays - 1, size - 1);
 
         for(YahooDatum datum : list){

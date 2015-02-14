@@ -59,4 +59,9 @@ public class HighVolumeCriteria extends Criteria{
     public String getDetail(YahooHistory history){
         return "\t" + computeRecentAverageVol(history) + "\t";
     }
+
+    public static void main(String[] args){
+        HighVolumeCriteria criteria = new HighVolumeCriteria("13,2");
+        System.out.println(criteria.computeRecentAverageVol(new YahooHistory("000975")));
+    }
 }
