@@ -19,9 +19,9 @@ public class VolumeFilterTask {
 
     public static boolean isRecentRisingDay(String stockId)throws Exception{
         YahooHistory history = new YahooHistory(stockId);
-        double recent = history.getYahooHistory().get(history.getYahooHistory().size()-1).getClose();
+        double recent = history.getYahooHistory().get(history.getYahooHistory().size()-1).getAdjClose();
 
-        double pre = history.getYahooHistory().get(history.getYahooHistory().size()-2).getClose();
+        double pre = history.getYahooHistory().get(history.getYahooHistory().size()-2).getAdjClose();
         return recent > pre;
 
     }

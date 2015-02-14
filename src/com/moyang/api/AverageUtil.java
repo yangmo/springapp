@@ -25,13 +25,13 @@ public class AverageUtil {
 
         for(int i = 0; i < k; i++){
             YahooDatum datum = data.get(i);
-            kAverage.add(new AverageDatum(datum.getClose(), datum.getDateStr()));
-            sum += datum.getClose();
+            kAverage.add(new AverageDatum(datum.getAdjClose(), datum.getDateStr()));
+            sum += datum.getAdjClose();
         }
 
         for(int i = k; i < data.size(); i++){
             YahooDatum datum = data.get(i);
-            sum += datum.getClose() - data.get(i-k).getClose();
+            sum += datum.getAdjClose() - data.get(i-k).getAdjClose();
             kAverage.add(new AverageDatum(sum/k, datum.getDateStr()));
         }
 
@@ -52,13 +52,13 @@ public class AverageUtil {
 
         for(int i = 0; i < k; i++){
             YahooDatum datum = data.get(i);
-            kAverage.add(new AverageDatum(datum.getClose(), datum.getDateStr()));
-            sum += datum.getClose();
+            kAverage.add(new AverageDatum(datum.getAdjClose(), datum.getDateStr()));
+            sum += datum.getAdjClose();
         }
 
         for(int i = k; i < data.size(); i++){
             YahooDatum datum = data.get(i);
-            sum += datum.getClose() - data.get(i-k).getClose();
+            sum += datum.getAdjClose() - data.get(i-k).getAdjClose();
             kAverage.add(new AverageDatum(sum/k, datum.getDateStr()));
         }
 

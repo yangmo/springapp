@@ -50,8 +50,8 @@ public class PriceInterval {
 		double result = 0;
 		double slope1, slope2;
 		for(int i = 0; i < expected.size() - 1; i++){
-			slope1 = expected.get(i + 1).getClose() / expected.get(i).getClose();
-			slope2 = actual.get(i + 1).getClose() / actual.get(i).getClose();
+			slope1 = expected.get(i + 1).getAdjClose() / expected.get(i).getAdjClose();
+			slope2 = actual.get(i + 1).getAdjClose() / actual.get(i).getAdjClose();
 			result += Math.abs(slope1 - slope2);
 		}
 		
@@ -72,8 +72,8 @@ public class PriceInterval {
 	
 	public static boolean isWithinSlopeRange(List<YahooDatum> expected, List<YahooDatum> actual){
 		int length = expected.size() - 1;
-		double slope1 = expected.get(length).getClose() / expected.get(0).getClose();
-		double slope2 = actual.get(length).getClose() / actual.get(0).getClose();
+		double slope1 = expected.get(length).getAdjClose() / expected.get(0).getAdjClose();
+		double slope2 = actual.get(length).getAdjClose() / actual.get(0).getAdjClose();
 	
 		if(Math.abs(slope1 - slope2) <= SLOPE_RANGE ){
 			return true;

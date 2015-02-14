@@ -31,7 +31,7 @@ public class OversoldCriteria extends Criteria{
         List<AverageDatum> list = AverageUtil.getKAverage(history, kAverage, Constants.LATEST_DAY, Constants.LATEST_DAY);
         double average = list.get(0).getVal();
 
-        double cur = history.getYahooHistory().get(history.getYahooHistory().size()-1).getClose();
+        double cur = history.getYahooHistory().get(history.getYahooHistory().size()-1).getAdjClose();
 
         double diff= average - cur;
         return diff/cur;

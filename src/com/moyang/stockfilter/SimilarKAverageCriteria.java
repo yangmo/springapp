@@ -38,7 +38,7 @@ public class SimilarKAverageCriteria extends Criteria{
 
         double average = list.get(0).getVal();
 
-        double cur = history.getYahooHistory().get(history.getYahooHistory().size()-1).getClose();
+        double cur = history.getYahooHistory().get(history.getYahooHistory().size()-1).getAdjClose();
         double diff = Math.abs(cur-average);
 
         return diff/cur;

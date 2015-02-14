@@ -13,7 +13,7 @@ public class HistoryCompare {
         ArrayList<Double> result = new ArrayList<Double>();
 
         for(YahooDatum datum : list){
-            result.add(datum.getClose());
+            result.add(datum.getAdjClose());
         }
 
         return result;

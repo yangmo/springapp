@@ -22,7 +22,7 @@ public class Test {
 		
 		List<YahooDatum> w = PriceInterval.findMostSimilar(expected, new YahooHistory("000737").getYahooHistory());
 		for(YahooDatum datum : w){
-			System.out.println(datum.getDateStr() + " " + datum.getClose());
+			System.out.println(datum.getDateStr() + " " + datum.getAdjClose());
 		}
 	
 		double diff = 10;

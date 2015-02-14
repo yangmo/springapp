@@ -12,7 +12,7 @@ public class Converter {
 		ArrayList<DataPoint> result = new ArrayList<DataPoint>();
 		int count = 0;
 		for(YahooDatum datum : data){
-			result.add(new DataPoint(datum.getDateStr(), datum.getClose()));
+			result.add(new DataPoint(datum.getDateStr(), datum.getAdjClose()));
 		}
 		
 		return result;

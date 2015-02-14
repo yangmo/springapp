@@ -18,7 +18,7 @@ public class Test {
         List<Double> result = new ArrayList<Double>();
 
         for(YahooDatum datum : snapShoot.getDatumList()){
-            result.add(datum.getClose());
+            result.add(datum.getAdjClose());
         }
 
         return result;
