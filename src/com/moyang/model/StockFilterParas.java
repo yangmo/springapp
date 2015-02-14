@@ -2,10 +2,14 @@ package com.moyang.model;
 
 import com.moyang.api.XueQiuLink;
 import com.moyang.api.YahooHistory;
+import com.moyang.common.MarketplaceUtil;
 import com.moyang.common.StockNameUtil;
 import com.moyang.common.StockUtil;
 import com.moyang.stockfilter.*;
 import org.apache.commons.lang.StringUtils;
+
+import java.net.URLEncoder;
+import java.util.ArrayList;
 
 /**
  * Created by yangmo on 15-2-6.
@@ -36,36 +40,37 @@ public class StockFilterParas {
         return andCriteria;
     }
 
-    public String getFilteredStockDetail(){
+    public ArrayList<FilterResult> getFilteredStockDetail(){
         AndCriteria andCriteria = getAndCriteria();
 
-        StringBuffer result = new StringBuffer();
         int count = 0;
 
-        int  notUpdated = 0;
+        ArrayList<FilterResult> list = new ArrayList<FilterResult>();
 
         for(String stockId : StockNameUtil.getAllStockIds()){
             try{
                 if(!StockUtil.isAlreadyUpdated(stockId)){
-
-                    notUpdated++;
                     continue;
                 }
                 System.out.println("stockId " + stockId);
 
                 YahooHistory history = new YahooHistory(stockId);
                 if(andCriteria.meetCriteria(history)){
-                    result.append(count ++ + "\t");
-                    result.append(stockId + "\t" + StockNameUtil.getName(stockId) + andCriteria.getDetail(history)
-                            + "\t" + XueQiuLink.getLink(stockId));
-                    result.append("\n");
+                    FilterResult filterResult = new FilterResult();
+                    filterResult.setSerialNo(count++);
+                    filterResult.setStockId(stockId);
+                    filterResult.setStockName(URLEncoder.encode(StockNameUtil.getName(stockId), "UTF-8"));
+                    filterResult.setDetail(andCriteria.getDetail(history));
+                    filterResult.setLink("http://xueqiu.com/S/"
+                            + MarketplaceUtil.getMarketplace(stockId).toUpperCase() + stockId);
+                    list.add(filterResult);
                 }
             } catch (Exception e) {
             }
 
         }
 
-        return result.toString();
+        return list;
     }
 
     public String getHighVolumeCriteria(){

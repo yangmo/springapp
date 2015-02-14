@@ -57,7 +57,7 @@ public class StockFilterController implements Serializable{
             throws Exception {
         ModelAndView mav = new ModelAndView(VIEW_NAME);
         mav.addObject("paras", paras);
-        mav.addObject("json", URLEncoder.encode(paras.getFilteredStockDetail(), "UTF-8"));
+        mav.addObject("filterResults", paras.getFilteredStockDetail());
         return mav;
     }
 }
