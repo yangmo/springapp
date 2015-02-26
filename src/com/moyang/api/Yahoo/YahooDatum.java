@@ -1,4 +1,4 @@
-package com.moyang.api;
+package com.moyang.api.Yahoo;
 
 import com.moyang.common.Constants;
 

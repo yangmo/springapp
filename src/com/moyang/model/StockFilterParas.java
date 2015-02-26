@@ -1,7 +1,6 @@
 package com.moyang.model;
 
-import com.moyang.api.XueQiuLink;
-import com.moyang.api.YahooHistory;
+import com.moyang.api.Yahoo.YahooHistory;
 import com.moyang.common.MarketplaceUtil;
 import com.moyang.common.StockNameUtil;
 import com.moyang.common.StockUtil;

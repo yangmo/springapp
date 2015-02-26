@@ -1,7 +1,7 @@
 package com.moyang.common;
 
-import com.moyang.api.YahooDatum;
-import com.moyang.api.YahooHistory;
+import com.moyang.api.Yahoo.YahooDatum;
+import com.moyang.api.Yahoo.YahooHistory;
 
 import java.text.ParseException;
 

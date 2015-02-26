@@ -1,8 +1,6 @@
 package com.moyang.stockfilter;
 
-import com.moyang.api.YahooHistory;
-
-import java.util.List;
+import com.moyang.api.Yahoo.YahooHistory;
 
 /**
  * Created by yangmo on 15-2-5.

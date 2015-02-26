@@ -1,6 +1,6 @@
 package com.moyang.compare;
 
-import com.moyang.api.YahooDatum;
+import com.moyang.api.Yahoo.YahooDatum;
 
 import java.util.ArrayList;
 import java.util.List;

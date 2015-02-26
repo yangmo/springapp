@@ -1,10 +1,10 @@
 package com.moyang.compare;
 
 import com.moyang.model.SnapShoot;
-import com.moyang.api.YahooHistory;
+import com.moyang.api.Yahoo.YahooHistory;
 import com.moyang.common.Constants;
 import com.moyang.common.StockNameUtil;
-import com.moyang.api.YahooDatum;
+import com.moyang.api.Yahoo.YahooDatum;
 
 import java.util.ArrayList;
 import java.util.List;

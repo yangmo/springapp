@@ -1,5 +1,5 @@
 package com.moyang.common;
-import com.moyang.api.YahooHistory;
+import com.moyang.api.Yahoo.YahooHistory;
 
 /**
  * Created by yangmo on 15-1-27.

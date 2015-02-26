@@ -2,6 +2,7 @@ package com.moyang.api;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import com.moyang.api.Yahoo.YahooDatum;
 import com.moyang.model.canvasJS.DataPoint;
 import com.moyang.model.AverageDatum;
 

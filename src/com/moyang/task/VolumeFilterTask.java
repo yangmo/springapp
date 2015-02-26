@@ -1,15 +1,9 @@
 package com.moyang.task;
 
-import com.moyang.api.AverageUtil;
-import com.moyang.api.YahooHistory;
-import com.moyang.common.Constants;
+import com.moyang.api.Yahoo.YahooHistory;
 import com.moyang.common.StockNameUtil;
 import com.moyang.common.StockUtil;
-import com.moyang.model.AverageDatum;
-import com.moyang.api.YahooDatum;
 import com.moyang.stockfilter.*;
-
-import java.util.List;
 
 /**
  * Created by yangmo on 15-1-25.

@@ -1,8 +1,8 @@
 package com.moyang.model;
 
 import com.moyang.api.Converter;
-import com.moyang.api.YahooAPI;
-import com.moyang.api.YahooDatum;
+import com.moyang.api.Yahoo.YahooAPI;
+import com.moyang.api.Yahoo.YahooDatum;
 import com.moyang.model.canvasJS.Canvas;
 import com.moyang.model.canvasJS.DataPoints;
 import com.moyang.api.AverageUtil;

@@ -1,7 +1,7 @@
 package com.moyang.compare;
 
 import com.moyang.model.SnapShoot;
-import com.moyang.api.YahooAPI;
+import com.moyang.api.Yahoo.YahooAPI;
 import com.moyang.common.Constants;
 import com.moyang.common.DateUtil;
 import com.moyang.common.StockNameUtil;

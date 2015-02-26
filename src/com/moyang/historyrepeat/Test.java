@@ -2,8 +2,8 @@ package com.moyang.historyrepeat;
 
 import java.util.List;
 
-import com.moyang.api.YahooDatum;
-import com.moyang.api.YahooHistory;
+import com.moyang.api.Yahoo.YahooDatum;
+import com.moyang.api.Yahoo.YahooHistory;
 import com.moyang.common.StockNameUtil;
 
 public class Test {

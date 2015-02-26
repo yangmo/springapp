@@ -1,11 +1,11 @@
 package com.moyang.task;
 
-import com.moyang.api.YahooAPI;
-import com.moyang.api.YahooHistory;
+import com.moyang.api.Yahoo.YahooAPI;
+import com.moyang.api.Yahoo.YahooHistory;
 import com.moyang.common.Constants;
 import com.moyang.common.DateUtil;
 import com.moyang.common.StockNameUtil;
-import com.moyang.api.YahooDatum;
+import com.moyang.api.Yahoo.YahooDatum;
 
 import java.util.*;
 
@@ -51,7 +51,7 @@ public class DailyUpdateTask {
         int passed = 0;
         ArrayList<String> failed = new ArrayList<String>();
 
-        int omit = 1181;
+        int omit = 2119;
 
         for(String stockId: StockNameUtil.getAllStockIds()){
             System.out.print(passed++ +"\t" + stockId + "\t");
@@ -64,7 +64,6 @@ public class DailyUpdateTask {
 
             try{
                 updateStockToDate(stockId, Constants.LATEST_DAY);
-
             } catch (Exception e) {
                 failed.add(stockId);
                 System.out.println(e.getLocalizedMessage());
