@@ -1,8 +1,10 @@
-package com.moyang.api;
+package com.moyang.api.Yahoo;
 
 import java.io.File;
 import java.util.*;
 
+import com.moyang.api.Yahoo.YahooAPI;
+import com.moyang.api.Yahoo.YahooDatum;
 import com.moyang.common.FileUtil;
 import com.moyang.common.MarketplaceUtil;
 import com.moyang.common.Constants;

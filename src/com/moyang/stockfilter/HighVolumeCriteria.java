@@ -1,7 +1,7 @@
 package com.moyang.stockfilter;
 
-import com.moyang.api.YahooDatum;
-import com.moyang.api.YahooHistory;
+import com.moyang.api.Yahoo.YahooDatum;
+import com.moyang.api.Yahoo.YahooHistory;
 import com.moyang.common.Constants;
 
 import java.util.List;

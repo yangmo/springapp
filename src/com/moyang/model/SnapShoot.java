@@ -1,6 +1,6 @@
 package com.moyang.model;
 
-import com.moyang.api.YahooDatum;
+import com.moyang.api.Yahoo.YahooDatum;
 
 import java.util.List;
 

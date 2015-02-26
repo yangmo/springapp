@@ -1,15 +1,6 @@
 package com.moyang.controllers;
 
-import com.moyang.api.Converter;
-import com.moyang.api.YahooAPI;
-import com.moyang.api.YahooDatum;
-import com.moyang.common.JsonSerializer;
-import com.moyang.model.QueryParas;
 import com.moyang.model.StockFilterParas;
-import com.moyang.model.canvasJS.Canvas;
-import com.moyang.model.canvasJS.Data;
-import com.moyang.model.canvasJS.DataPoints;
-import com.moyang.stockfilter.SimilarKAverageCriteria;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.context.annotation.Scope;
@@ -21,10 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.Serializable;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 /**
  * Created by yangmo on 15-2-6.

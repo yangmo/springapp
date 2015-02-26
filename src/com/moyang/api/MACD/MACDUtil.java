@@ -1,6 +1,6 @@
 package com.moyang.api.MACD;
 
-import com.moyang.api.YahooHistory;
+import com.moyang.api.Yahoo.YahooHistory;
 import com.moyang.model.AverageDatum;
 
 import java.util.ArrayList;
@@ -41,8 +41,8 @@ public class MACDUtil {
 
 
     public static void main(String[] args) throws Exception{
-        ArrayList<AverageDatum> averageDatumArrayList = getMACD(new YahooHistory("000750")
-                , "2014-01-01", "2015-02-13");
+        ArrayList<AverageDatum> averageDatumArrayList = getMACD(new YahooHistory("601377")
+                , "2010-10-13", "2010-12-11");
         for(AverageDatum datum: averageDatumArrayList){
             System.out.println(datum.getDateStr() + "\t" + datum.getVal());
         }
