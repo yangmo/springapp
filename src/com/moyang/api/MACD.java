@@ -58,7 +58,6 @@ public class MACD {
             macd =trimDisplay(2 * (diff - dea));
 
             YahooDatum datum = data.get(i);
-           System.out.println(datum.getDateStr() + "\t" + diff + "\t" + dea + "\t" + macd);
 
             String dateString = data.get(i).getDateStr();
 
