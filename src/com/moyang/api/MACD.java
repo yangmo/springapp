@@ -36,8 +36,8 @@ public class MACD {
             result.add(new AverageDatum(0, startDate));
         }
 
-        double emaShort = data.get(0).getClose() +(1 - shortRatio) * (data.get(1).getClose() - data.get(0).getClose());
-        double emaLong =  data.get(0).getClose() +(1 - longRatio)* (data.get(1).getClose() - data.get(0).getClose());
+        double emaShort = data.get(0).getAdjClose() +(1 - shortRatio) * (data.get(1).getAdjClose() - data.get(0).getAdjClose());
+        double emaLong =  data.get(0).getAdjClose() +(1 - longRatio)* (data.get(1).getAdjClose() - data.get(0).getAdjClose());
 
         double diff = emaShort - emaLong;
         double dea = 2 / (M + 1) * diff ;
@@ -50,12 +50,15 @@ public class MACD {
 
         for(int i = 2; i < data.size(); i++){
 
-            emaShort = emaShort * shortRatio+ data.get(i).getClose()  * (1 - shortRatio);
-            emaLong = emaLong * longRatio + data.get(i).getClose()   * (1 - longRatio);
+            emaShort = trim(emaShort * shortRatio+ data.get(i).getAdjClose() * (1 - shortRatio));
+            emaLong = trim(emaLong * longRatio + data.get(i).getAdjClose() * (1 - longRatio));
 
             diff = emaShort - emaLong;
             dea = 2 / (M + 1) * diff + dea * (M - 1) / (M + 1);
             macd =trimDisplay(2 * (diff - dea));
+
+            YahooDatum datum = data.get(i);
+           System.out.println(datum.getDateStr() + "\t" + diff + "\t" + dea + "\t" + macd);
 
             String dateString = data.get(i).getDateStr();
 
@@ -74,7 +77,8 @@ public class MACD {
 
     public static void main(String[] args){
 
-        ArrayList<AverageDatum> list = getMACD("600030", "2003-01-06", "2003-02-22");
+     //   ArrayList<AverageDatum> list = getMACD("600030", "2003-01-06", "2003-02-22");
+        ArrayList<AverageDatum> list = getMACD("600030", "2014-11-01", "2015-02-26");
 
     }
 }
