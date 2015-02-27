@@ -182,7 +182,7 @@ public class SimpleWebDownloader {
 
         try {
             httpClient.executeMethod(getMethod);
-            httpClient.setConnectionTimeout(1000000);
+            httpClient.setConnectionTimeout(3000);
             httpCodeValidator.validateHttpCode(getMethod.getStatusCode());
             is = getMethod.getResponseBodyAsStream();
             consumer.setInputStream(is);

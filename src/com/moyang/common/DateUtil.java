@@ -4,6 +4,7 @@ import com.moyang.api.Yahoo.YahooDatum;
 import com.moyang.api.Yahoo.YahooHistory;
 
 import java.text.ParseException;
+import java.util.Date;
 
 /**
  * Created by yangmo on 15-1-24.
@@ -33,7 +34,14 @@ public class DateUtil {
             return String.valueOf(monthInt - 1);
         }
     }
+    public static int calcIntervalDays(Date start, Date end){
+        long interval = end.getTime() - start.getTime();
+        return (int) interval / 86400000;
+    }
+
     public static void main(String[] args) throws Exception{
-        System.out.println(daysFromNow("2014-11-11"));
+        Date date ;
+
+        System.out.println(Constants.DATE_FORMAT.parse("2005-08-11").getTime()/86400000);
     }
 }

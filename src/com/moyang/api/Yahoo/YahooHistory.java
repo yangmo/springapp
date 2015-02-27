@@ -15,7 +15,42 @@ public class YahooHistory {
 	private String stockId ;
 	private String marketplace;
 	private ArrayList<YahooDatum> yahooHistory = new ArrayList<YahooDatum>();
-	
+
+	/**
+	 * Binary Search
+	 * @param dateStr
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	public YahooDatum findDatumAt(String dateStr, int start, int end){
+		if(start > end){
+			return null;
+		}
+
+		int middle = (start + end) / 2;
+		String middleDateStr = yahooHistory.get(middle).getDateStr();
+
+		if(middleDateStr.equals(dateStr)){
+			return yahooHistory.get(middle);
+		}
+
+		if(middleDateStr.compareTo(dateStr) > 0){
+			return findDatumAt(dateStr, start, middle);
+		} else{
+			return findDatumAt(dateStr, middle, end);
+		}
+	}
+
+	public YahooDatum findDatumAt(String dateStr){
+		return findDatumAt(dateStr, 0, getYahooHistory().size());
+	}
+
+	public static void main(String[] args){
+YahooHistory history = new YahooHistory("600030");
+		System.out.println(history.findDatumAt("2015-02-26", 0, history.getYahooHistory().size()).getAdjClose());
+	}
+
 	public YahooHistory(String stockId) {
 		String path = getFilePath(stockId);
 		if(!new File(path).exists()){
@@ -47,10 +82,7 @@ public class YahooHistory {
 		String stockName = StockNameUtil.getName(stockId);
 		return Constants.STOCK_ROOT + marketplace + "/" + stockId + stockName + ".csv";
 	}
-	
-	public static void main(String[] args) throws Exception{
 
-	}
 	
 	public String getMarketplace() {
 		return marketplace;
