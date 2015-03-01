@@ -3,7 +3,6 @@ package com.moyang.backtesting;
 import com.moyang.common.Constants;
 
 import java.util.Date;
-
 /**
  * Created by yangmo on 15-2-27.
  */
@@ -12,7 +11,9 @@ public class TradingRecord {
     private double buyPrice;
     private String sellDate;
     private double sellPrice;
+
     private long holdingDays;
+
     private double profitPercent;
 
 
@@ -47,6 +48,7 @@ public class TradingRecord {
         long time = Constants.DATE_FORMAT.parse("2015-04-11").getTime();
         System.out.println(time / 86400000);
     }
+
 
 
     public double getProfitPercent(){

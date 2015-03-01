@@ -15,7 +15,9 @@ public class MACDEvaluator {
     private static final DecimalFormat dfDisplay = new DecimalFormat("#.00");
 
     public static void main(String[] args){
+
         ArrayList<TradingRecord> records = generateTradingRecord("600030", "2003-01-09", "2015-11-15");
+
 
         int count = 0;
         for(TradingRecord record : records){
