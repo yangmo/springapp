@@ -4,6 +4,7 @@ import com.moyang.api.Yahoo.YahooDatum;
 import com.moyang.api.Yahoo.YahooHistory;
 
 import java.text.ParseException;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -34,14 +35,31 @@ public class DateUtil {
             return String.valueOf(monthInt - 1);
         }
     }
+
     public static int calcIntervalDays(Date start, Date end){
-        long interval = end.getTime() - start.getTime();
-        return (int) interval / 86400000;
+        long interval = end.getTime() - start.getTime() ;
+        interval += (interval > 0 ? 1000 : -1000);
+        return (int)(interval / 24 / 60 / 60 / 1000);
+    }
+
+
+    public static int calcIntervalDays(String start, String end) {
+        return calcIntervalDays(getDate(start), getDate(end));
+    }
+
+    public static Date getDate(String dateStr){
+        String[] components = dateStr.split("-");
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Integer.valueOf(components[0]), Integer.valueOf(toMonthInt(components[1]))
+                , Integer.valueOf(components[2]));
+
+        return calendar.getTime();
     }
 
     public static void main(String[] args) throws Exception{
-        Date date ;
+        String startStr = "2013-03-12";
+        String endStr = "2013-03-11";
 
-        System.out.println(Constants.DATE_FORMAT.parse("2005-08-11").getTime()/86400000);
+        System.out.println(calcIntervalDays(startStr, endStr));
     }
 }

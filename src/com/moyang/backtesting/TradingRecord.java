@@ -1,6 +1,7 @@
 package com.moyang.backtesting;
 
 import com.moyang.common.Constants;
+import com.moyang.common.DateUtil;
 
 import java.util.Date;
 /**
@@ -12,7 +13,7 @@ public class TradingRecord {
     private String sellDate;
     private double sellPrice;
 
-    private long holdingDays;
+    private int holdingDays;
 
     private double profitPercent;
 
@@ -22,7 +23,7 @@ public class TradingRecord {
         this.buyPrice = buyPrice;
         this.sellDate = sellDate;
         this.sellPrice = sellPrice;
-        this.holdingDays = getHoldingDays();
+        this.holdingDays = DateUtil.calcIntervalDays(buyDate, sellDate);
         this.profitPercent = Double.valueOf(Constants.DOUBLE_FORMAT.format(getProfitPercent()));
     }
 
@@ -32,17 +33,6 @@ public class TradingRecord {
                 + profitPercent;
     }
 
-    public long getHoldingDays(){
-        try {
-            Date startDate = Constants.DATE_FORMAT.parse(buyDate);
-            Date endDate = Constants.DATE_FORMAT.parse(sellDate);
-            long interval = endDate.getTime() - startDate.getTime();
-            return interval / 86400000;
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public static void main(String[] args) throws Exception{
         long time = Constants.DATE_FORMAT.parse("2015-04-11").getTime();
