@@ -34,12 +34,10 @@ public class TradingRecord {
     }
 
 
-    public static void main(String[] args) throws Exception{
-        long time = Constants.DATE_FORMAT.parse("2015-04-11").getTime();
-        System.out.println(time / 86400000);
+
+    public int getHoldingDays(){
+        return holdingDays;
     }
-
-
 
     public double getProfitPercent(){
         return (sellPrice - buyPrice) / buyPrice;

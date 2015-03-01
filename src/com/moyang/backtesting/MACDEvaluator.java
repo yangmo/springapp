@@ -3,6 +3,7 @@ package com.moyang.backtesting;
 import com.moyang.api.MACD;
 import com.moyang.api.Yahoo.YahooDatum;
 import com.moyang.api.Yahoo.YahooHistory;
+import com.moyang.common.DateUtil;
 import com.moyang.model.AverageDatum;
 
 import java.text.DecimalFormat;
@@ -16,15 +17,19 @@ public class MACDEvaluator {
 
     public static void main(String[] args){
 
-        ArrayList<TradingRecord> records = generateTradingRecord("600030", "2003-01-09", "2015-11-15");
+        ArrayList<TradingRecord> records = generateTradingRecord("600655", "2002-01-09", "2012-01-09");
 
 
         int count = 0;
+        int totalHoldingDays = 0;
         for(TradingRecord record : records){
             System.out.println(count ++ + "\t" +record);
+            totalHoldingDays += record.getHoldingDays();
         }
 
-        System.out.println(TradingRecordUtil.overallProfit(records));
+        System.out.println(TradingRecordUtil.overallProfit(records) + "\t" + totalHoldingDays);
+
+        System.out.println(DateUtil.calcIntervalDays("2003-01-09", "2015-11-15"));
     }
 
     public static ArrayList<TradingRecord> generateTradingRecord(String stockId){

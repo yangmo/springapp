@@ -28,6 +28,10 @@
       <br/><sf:input class="form-control"  path = "similarKAverageCriteria"
                                  id="similarKAverageCriteria"  style="width: 150px;"/>
       <br/>
+      MACD 反转:
+            <br/><sf:input class="form-control"  path = "macdCriteria"
+                                       id="macdCriteria"  style="width: 150px;"/>
+            <br/>
         <input class="btn btn-default" type="submit" value="查询"  />
     </sf:form>
 

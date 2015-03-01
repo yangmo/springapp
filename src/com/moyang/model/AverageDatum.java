@@ -24,4 +24,8 @@ public class AverageDatum  extends Datum {
         return aSum - bSum;
     }
 
+    @Override
+    public String toString(){
+        return getDateStr() + "\t" + getVal();
+    }
 }

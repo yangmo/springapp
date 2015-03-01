@@ -77,7 +77,10 @@ public class MACD {
     public static void main(String[] args){
 
      //   ArrayList<AverageDatum> list = getMACD("600030", "2003-01-06", "2003-02-22");
-        ArrayList<AverageDatum> list = getMACD("600030", "2014-11-01", "2015-02-26");
+        ArrayList<AverageDatum> list = getMACD("000960", "2014-11-01", "2015-02-27");
 
+        for(AverageDatum item : list){
+            System.out.println(item);
+        }
     }
 }

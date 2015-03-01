@@ -18,6 +18,7 @@ public class StockFilterParas {
     private String oversoldCriteria;
     private String recentMaxVolCriteria;
     private String similarKAverageCriteria;
+    private String macdCriteria;
 
     public AndCriteria getAndCriteria(){
         AndCriteria andCriteria = new AndCriteria();
@@ -36,7 +37,17 @@ public class StockFilterParas {
         if(!StringUtils.isEmpty(similarKAverageCriteria)){
             andCriteria.appendCriteria(new SimilarKAverageCriteria(similarKAverageCriteria));
         }
+
+        if(!StringUtils.isEmpty(macdCriteria)){
+            andCriteria.appendCriteria(new MACDCriteria(macdCriteria));
+        }
+
         return andCriteria;
+    }
+    public static void main(String[] k){
+        StockFilterParas paras = new StockFilterParas();
+        paras.setMacdCriteria("2");
+        System.out.println(paras.getFilteredStockDetail().size());
     }
 
     public ArrayList<FilterResult> getFilteredStockDetail(){
@@ -65,6 +76,7 @@ public class StockFilterParas {
                     list.add(filterResult);
                 }
             } catch (Exception e) {
+                throw new RuntimeException(e);
             }
 
         }
@@ -88,6 +100,13 @@ public class StockFilterParas {
         this.oversoldCriteria = oversoldCriteria;
     }
 
+    public String getMacdCriteria(){
+        return macdCriteria;
+    }
+
+    public void setMacdCriteria(String macdCriteria){
+        this.macdCriteria = macdCriteria;
+    }
     public String getRecentMaxVolCriteria(){
         return recentMaxVolCriteria;
     }

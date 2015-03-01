@@ -7,10 +7,10 @@ import java.util.ArrayList;
  */
 public class TradingRecordUtil {
     public static double overallProfit(ArrayList<TradingRecord> records){
-        double profit = 0;
+        double profit = 1;
 
         for(TradingRecord record : records){
-            profit += record.getProfitPercent();
+            profit *= (record.getProfitPercent() + 1);
         }
 
         return profit;

@@ -57,7 +57,7 @@ YahooHistory history = new YahooHistory("600030");
 			YahooAPI.writeYahooHistory(stockId, YahooAPI.getYahooHistory(stockId));
 		}
 		String rawInput = FileUtil.getContent(getFilePath(stockId));
-		
+		this.stockId = stockId;
 		yahooHistory.addAll(rawInputToDatumList(rawInput));
 	}
 

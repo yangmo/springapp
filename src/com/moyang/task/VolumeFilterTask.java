@@ -22,16 +22,18 @@ public class VolumeFilterTask {
     public static void run(){
         int count = 0;
         AndCriteria andCriteria = new AndCriteria();
-        andCriteria.appendCriteria(new HighVolumeCriteria("13,2"));
+    //    andCriteria.appendCriteria(new HighVolumeCriteria("13,2"));
    //     andCriteria.appendCriteria(new RecentMaxVolCriteria("13"));
-      // andCriteria.appendCriteria(new OversoldCriteria("10,0.03"));
-     //   andCriteria.appendCriteria(new SimilarKAverageCriteria("30,0.05"))
+     //  andCriteria.appendCriteria(new OversoldCriteria("30,0.01"));
+      //   andCriteria.appendCriteria(new SimilarKAverageCriteria("30,0.02"));
        //         .appendCriteria(new SimilarKAverageCriteria("5,0.05"));
+       andCriteria.appendCriteria(new MACDCriteria("2"));
         for(String stockId : StockNameUtil.getAllStockIds()){
             try{
                 if(!StockUtil.isAlreadyUpdated(stockId)){
                     continue;
                 }
+
 
                 YahooHistory history = new YahooHistory(stockId);
                 if(andCriteria.meetCriteria(history)){
