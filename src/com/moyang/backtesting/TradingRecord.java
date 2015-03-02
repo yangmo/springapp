@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * Created by yangmo on 15-2-27.
  */
-public class TradingRecord {
+public class TradingRecord implements Comparable<TradingRecord>{
     private String buyDate;
     private double buyPrice;
     private String sellDate;
@@ -27,6 +27,17 @@ public class TradingRecord {
         this.profitPercent = Double.valueOf(Constants.DOUBLE_FORMAT.format(getProfitPercent()));
     }
 
+    @Override
+    public int compareTo(TradingRecord obj){
+        if(profitPercent != obj.getProfitPercent()){
+            if(profitPercent > obj.getProfitPercent()){
+                return 1;
+            } else {
+                return -1;
+            }
+        }
+        return obj.getHoldingDays() - holdingDays;
+    }
     @Override
     public String toString(){
         return buyDate + "\t" + buyPrice + "\t" + sellDate + "\t" + sellPrice + "\t" + holdingDays + "\t"
