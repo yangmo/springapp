@@ -46,9 +46,7 @@ public class StockFilterController implements Serializable{
         mav.addObject("paras", paras);
 
         mav.addObject("filterResults", paras.getFilteredStockDetail());
-        if(mav != null){
-            throw new RuntimeException("" + paras.getFilteredStockDetail().size());
-        }
+
         return mav;
     }
 }

@@ -19,7 +19,7 @@ public class MACDEvaluator {
 
     public static void main(String[] args){
 
-        String stockId = "600030";
+        String stockId = "000596";
         String start = "2000-01-01";
         String end  = "2015-02-27";
 

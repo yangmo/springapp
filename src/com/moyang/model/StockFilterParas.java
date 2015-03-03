@@ -62,9 +62,15 @@ public class StockFilterParas {
                 if(!StockUtil.isAlreadyUpdated(stockId)){
                     continue;
                 }
-                System.out.println("stockId " + stockId);
 
                 YahooHistory history = new YahooHistory(stockId);
+
+                if("300385".equals(history.getStockId())){
+                    System.out.println(history.getStockId() + "\t" + history.getYahooHistory().size()
+                            + "\t" + history.getFilePath(stockId));
+                }
+
+
                 if(andCriteria.meetCriteria(history)){
                     FilterResult filterResult = new FilterResult();
                     filterResult.setSerialNo(count++);

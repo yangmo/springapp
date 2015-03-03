@@ -32,7 +32,7 @@ public class MACDCriteria extends Criteria{
         }
 
         for (int i = macdList.size() - 1 - hasBeenPositiveFor; i < macdList.size(); i++) {
-            if (macdList.get(i).getVal() <= 0) {
+            if (macdList.get(i).getVal() < 0) {
                 return true;
             }
         }

@@ -21,8 +21,6 @@ public class Data {
     	String result  = sb.toString();
 		result = result.substring(0, result.length() - 1);
 
-		System.out.println( result );
-
     	return "data:[" + result + "]";
     }
     
