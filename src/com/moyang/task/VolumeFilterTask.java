@@ -22,9 +22,9 @@ public class VolumeFilterTask {
     public static void run(){
         int count = 0;
         AndCriteria andCriteria = new AndCriteria();
-  //       andCriteria.appendCriteria(new HighVolumeCriteria("12,4"));
+         andCriteria.appendCriteria(new HighVolumeCriteria("12,0"));
    //     andCriteria.appendCriteria(new RecentMaxVolCriteria("13"));
-    //  andCriteria.appendCriteria(new OversoldCriteria("20,0.01"));
+    //  andCriteria.appendCriteria(new OversoldCriteria("30,0.01"));
       //   andCriteria.appendCriteria(new SimilarKAverageCriteria("30,0.02"));
        //         .appendCriteria(new SimilarKAverageCriteria("5,0.05"));
       andCriteria.appendCriteria(new MACDCriteria("1"));

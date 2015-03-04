@@ -10,7 +10,11 @@ public class YahooDatum {
 	private double close;
 	private long volume;
 	private double adjClose;
-	
+
+	public YahooDatum(){
+
+	}
+
 	public YahooDatum(String msg) {
 		String[] components = msg.split(",");
 		dateStr = components[0];
@@ -73,7 +77,7 @@ public class YahooDatum {
 		return volume;
 	}
 
-	public void setVolume(int volume) {
+	public void setVolume(long volume) {
 		this.volume = volume;
 	}
 	

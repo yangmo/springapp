@@ -2,6 +2,7 @@ package com.moyang.api;
 
 import com.moyang.api.Yahoo.YahooDatum;
 import com.moyang.api.Yahoo.YahooHistory;
+import com.moyang.common.Constants;
 import com.moyang.model.AverageDatum;
 
 import java.text.DecimalFormat;
@@ -77,7 +78,7 @@ public class MACD {
     public static void main(String[] args){
 
      //   ArrayList<AverageDatum> list = getMACD("600030", "2003-01-06", "2003-02-22");
-        ArrayList<AverageDatum> list = getMACD("600030", "2008-02-01", "2008-04-11");
+        ArrayList<AverageDatum> list = getMACD("600489", "2008-02-01", Constants.LATEST_DAY);
 
         for(AverageDatum item : list){
             System.out.println(item);

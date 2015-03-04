@@ -3,6 +3,8 @@ package com.moyang.api;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.moyang.api.Yahoo.YahooDatum;
+import com.moyang.common.Constants;
 import com.moyang.common.MarketplaceUtil;
 import com.moyang.common.RegUtil;
 import com.moyang.common.StockNameUtil;
@@ -23,16 +25,33 @@ public class SinaAPI {
 		String rawInput = SimpleWebDownloader.getAsString(getRequest(stockId));
         return Double.valueOf(getPriceFromMsg(rawInput));
 	}
-	
+
+	public static YahooDatum getLastestYahooDatum(String stockId) throws Exception{
+		String rawInput = SimpleWebDownloader.getAsString(getRequest(stockId));
+		rawInput.replaceAll("\"", "");
+
+		String[] contents = rawInput.split(",");
+		YahooDatum datum = new YahooDatum();
+
+		datum.setDateStr(Constants.LATEST_DAY);
+        datum.setAdjClose(Double.valueOf(contents[3]));
+        datum.setClose(Double.valueOf(contents[3]));
+		datum.setHigh(Double.valueOf(contents[4]));
+		datum.setVolume(Long.valueOf(contents[8]));
+		datum.setLow(Double.valueOf(contents[5]));
+		datum.setOpen(Double.valueOf(contents[1]));
+		return datum;
+	}
+
 	public static void main(String[] args) throws Exception{
 		Scanner in=new Scanner(System.in);
         String input = "";
         while((input = in.nextLine())!=null){
         	try {
         		String rawInput = SimpleWebDownloader.getAsString(getRequest(input));
-        		System.out.println(getPriceFromMsg(rawInput) + " " +StockNameUtil.getName(input));
+				System.out.println(getLastestYahooDatum(input).toString());
         	} catch (Exception e){
-        	    System.out.println(e.getMessage());	
+        	    System.out.println(e.getStackTrace());
         	}
         }
 	}
