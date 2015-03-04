@@ -15,11 +15,12 @@ import java.util.Collections;
  * Created by yangmo on 15-2-27.
  */
 public class MACDEvaluator {
+    private static final double STOP_LOSS = -10.05;
     private static final DecimalFormat dfDisplay = new DecimalFormat("#.00");
 
     public static void main(String[] args){
 
-        String stockId = "000596";
+        String stockId = "600755";
         String start = "2000-01-01";
         String end  = "2015-02-27";
 
@@ -62,7 +63,8 @@ public class MACDEvaluator {
 
                 for(int j = i ; j < macdList.size(); j ++){
                     sellDate = macdList.get(j).getDateStr();
-                    if(j == macdList.size() - 1 || macdList.get(j - 1).getVal() >= 0){
+                    if (macdList.get(j - 1).getVal() >= 0&& !isStopLoss(buyPrice, history.findDatumAt(macdList.get(j-1).getDateStr()).getAdjClose())
+                            ){
                         i++;
                     } else {
                         break;
@@ -79,5 +81,10 @@ public class MACDEvaluator {
         }
 
         return recordList;
+    }
+
+    public static boolean isStopLoss(double buyPrice, double curPrice){
+        double diff = curPrice - buyPrice;
+        return diff / buyPrice < STOP_LOSS;
     }
 }
