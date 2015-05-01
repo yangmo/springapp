@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping>
+    <class name="com.moyang.hibernate.StockInfo" table="stockinfo">
+        <id name = "stockId" type="string" column="stockid" />
+        <property name="stockName" column="stockname" type="string" />
+        <property name="marketplace" column="marketplace" type="string" />
+    </class>
+
+</hibernate-mapping>
