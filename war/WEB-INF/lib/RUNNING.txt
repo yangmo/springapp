@@ -176,7 +176,7 @@ setenv script, because they are used to locate that file.
 All the environment variables described here and the "setenv" script are
 used only if you use the standard scripts to launch Tomcat. For example, if
 you have installed Tomcat as a service on Windows, the service wrapper
-launches Java directly and does not use the script files.
+launches Java directly and does not use the script com.moyang.files.
 
 
 (4) Start Up Tomcat
@@ -237,14 +237,14 @@ Advanced Configuration - Multiple Tomcat Instances
 In many circumstances, it is desirable to have a single copy of a Tomcat
 binary distribution shared among multiple users on the same server.  To make
 this possible, you can set the CATALINA_BASE environment variable to the
-directory that contains the files for your 'personal' Tomcat instance.
+directory that contains the com.moyang.files for your 'personal' Tomcat instance.
 
-When running with a separate CATALINA_HOME and CATALINA_BASE, the files
+When running with a separate CATALINA_HOME and CATALINA_BASE, the com.moyang.files
 and directories are split as following:
 
 In CATALINA_BASE:
 
- * bin  - Only the following files:
+ * bin  - Only the following com.moyang.files:
 
            * setenv.sh (*nix) or setenv.bat (Windows),
            * tomcat-juli.jar
@@ -252,24 +252,24 @@ In CATALINA_BASE:
           The setenv scripts were described above. The tomcat-juli library
           is documented in the Logging chapter in the User Guide.
 
- * conf - Server configuration files (including server.xml)
+ * conf - Server configuration com.moyang.files (including server.xml)
 
  * lib  - Libraries and classes, as explained below
 
- * logs - Log and output files
+ * logs - Log and output com.moyang.files
 
  * webapps - Automatically loaded web applications
 
  * work - Temporary working directories for web applications
 
- * temp - Directory used by the JVM for temporary files (java.io.tmpdir)
+ * temp - Directory used by the JVM for temporary com.moyang.files (java.io.tmpdir)
 
 
 In CATALINA_HOME:
 
  * bin  - Startup and shutdown scripts
 
-          The following files will be used only if they are absent in
+          The following com.moyang.files will be used only if they are absent in
           CATALINA_BASE/bin:
 
           setenv.sh (*nix), setenv.bat (Windows), tomcat-juli.jar
@@ -297,7 +297,7 @@ Classloading documentation in the User Guide for details.
 
 
 It might be useful to note that the values of CATALINA_HOME and
-CATALINA_BASE can be referenced in the XML configuration files processed
+CATALINA_BASE can be referenced in the XML configuration com.moyang.files processed
 by Tomcat as ${catalina.home} and ${catalina.base} respectively.
 
 For example, the standard manager web application can be kept in
@@ -372,7 +372,7 @@ architecture and it must match the Java Runtime Environment executables
 that will be used to launch Tomcat.
 
 The Windows-specific binary distributions of Apache Tomcat include binary
-files for these components. On other platforms you would have to look for
+com.moyang.files for these components. On other platforms you would have to look for
 binary versions elsewhere or compile them yourself.
 
 If you are new to Tomcat, do not bother with these components to start with.
@@ -465,16 +465,16 @@ For further reading:
 
       http://tomcat.apache.org/tomcat-7.0-doc/windows-service-howto.html
 
-The binary files of Apache Commons Daemon in Apache Tomcat distributions
+The binary com.moyang.files of Apache Commons Daemon in Apache Tomcat distributions
 for Windows are named:
 
   - "tomcat7.exe"
   - "tomcat7w.exe"
 
-These files are renamed copies of "prunsrv.exe" and "prunmgr.exe" from
+These com.moyang.files are renamed copies of "prunsrv.exe" and "prunmgr.exe" from
 Apache Commons Daemon distribution. The file names have a meaning: they are
 used as the service name to register the service in Windows, as well as the
 key name to store distinct configuration for this installation of
 "procrun". If you would like to install several instances of Tomcat 7.0
-in parallel, you have to further rename those files, using the same naming
+in parallel, you have to further rename those com.moyang.files, using the same naming
 scheme.

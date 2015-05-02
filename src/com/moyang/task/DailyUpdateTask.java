@@ -54,7 +54,7 @@ public class DailyUpdateTask {
         int omit = 0;
 
         for(String stockId: StockNameUtil.getAllStockIds()){
-            System.out.print(passed++ +"\t" + stockId + "\t");
+            System.out.print(passed++ +"\t" + stockId + "\n");
             boolean success = true;
 
             if(omit>passed){

@@ -6,7 +6,6 @@ import java.util.Set;
 
 public class StockNameUtil {
 
-	public static final String STOCK_NAME_FILE_PATH = "files/Stocks.txt";
 	public static final HashMap<String, String> STOCK_NAME_MAP = new HashMap<String, String>();
 	
 	protected StockNameUtil(){
@@ -17,23 +16,18 @@ public class StockNameUtil {
 	}
 	
 	public static void init(){
-		File dir = new File(Constants.STOCK_ROOT + Constants.SH);
+		String content =  FileUtil.getContent(Constants.STOCKS_TXT);
 
-		String[] files = dir.list();
-		for(String fileName : files){
-			String stockId = fileName.substring(0,6);
+		String[] stocks = content.split("\n");
+		for(String stock : stocks){
+			String[] tmp = stock.split("\t");
 
-			String stockName = fileName.substring(6, fileName.length() - 4);
+			if(tmp == null || tmp.length != 2){
+				continue;
+			}
 
-			STOCK_NAME_MAP.put(stockId, stockName);
-		}
-		
-		dir = new File(Constants.STOCK_ROOT + Constants.SZ);
-	    files = dir.list();
-		for(String fileName : files){
-			String stockId = fileName.substring(0,6);
-			String stockName = fileName.substring(6, fileName.length() - 4);
-			STOCK_NAME_MAP.put(stockId, stockName);
+
+			STOCK_NAME_MAP.put(tmp[0], tmp[1]);
 		}
 
 	}

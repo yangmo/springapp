@@ -14,7 +14,7 @@ public class Constants {
      */
     public static final String LOCAL_ROOT = "/usr/local/apache-tomcat-6.0.43/bin/files/";
     public static final String STOCK_ROOT = "/usr/local/apache-tomcat-6.0.43/bin/files/stocks/";
-
+    public static final String STOCKS_TXT = "/usr/local/apache-tomcat-6.0.43/bin/files/Stocks.txt";
     /**
      *
      */

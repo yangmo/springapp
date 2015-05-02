@@ -135,7 +135,7 @@ public class FileUtil {
     }
     
     public static void main(String[] args) throws Exception{
-    	String rawInput = FileUtil.getContent("files/rawInput.txt");
+    	String rawInput = FileUtil.getContent("com/moyang/files/rawInput.txt");
     	System.out.println(rawInput);
     	
     	String [] list = rawInput.split("\\)");
@@ -150,7 +150,7 @@ public class FileUtil {
     		sb.append(tmp.substring(index + 1, tmp.length())  + "\t" + tmp.substring(0, index).trim()+"\n");
     		
     	}
-    	FileUtil.writeToFile("files/Stocks.txt", sb.toString());
+    	FileUtil.writeToFile("com/moyang/files/Stocks.txt", sb.toString());
     	System.out.println(count);
     }
 }

@@ -26,7 +26,7 @@
 
       "Source" form shall mean the preferred form for making modifications,
       including but not limited to software source code, documentation
-      source, and configuration files.
+      source, and configuration com.moyang.files.
 
       "Object" form shall mean any form resulting from mechanical
       transformation or translation of a Source form, including but
@@ -95,8 +95,8 @@
       (a) You must give any other recipients of the Work or
           Derivative Works a copy of this License; and
 
-      (b) You must cause any modified files to carry prominent notices
-          stating that You changed the files; and
+      (b) You must cause any modified com.moyang.files to carry prominent notices
+          stating that You changed the com.moyang.files; and
 
       (c) You must retain, in the Source form of any Derivative Works
           that You distribute, all copyright, patent, trademark, and
@@ -426,7 +426,7 @@ any resulting litigation.
 
 For the Windows Installer component:
 
-    * All NSIS source code, plug-ins, documentation, examples, header files and
+    * All NSIS source code, plug-ins, documentation, examples, header com.moyang.files and
        graphics, with the exception of the compression modules and where
        otherwise noted, are licensed under the zlib/libpng license.
     * The zlib compression module for NSIS is licensed under the zlib/libpng
@@ -700,9 +700,9 @@ Special exception for LZMA compression module
 
 Igor Pavlov and Amir Szekely, the authors of the LZMA compression module for
 NSIS, expressly permit you to statically or dynamically link your code (or bind
-by name) to the files from the LZMA compression module for NSIS without
+by name) to the com.moyang.files from the LZMA compression module for NSIS without
 subjecting your linked code to the terms of the Common Public license version
-1.0. Any modifications or additions to files from the LZMA compression module
+1.0. Any modifications or additions to com.moyang.files from the LZMA compression module
 for NSIS, however, are subject to the terms of the Common Public License version
 1.0.
 
@@ -731,7 +731,7 @@ COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0
         Modifications made by that particular Contributor.
 
    1.3. Covered Software. means (a) the Original Software, or (b) Modifications,
-        or (c) the combination of files containing Original Software with files
+        or (c) the combination of com.moyang.files containing Original Software with com.moyang.files
         containing Modifications, in each case including portions thereof.
 
    1.4. Executable. means the Covered Software in any form other than Source

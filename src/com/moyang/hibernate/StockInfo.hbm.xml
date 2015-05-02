@@ -5,9 +5,9 @@
 
 
 <hibernate-mapping>
-    <class name="com.moyang.hibernate.StockInfo" table="stockinfo">
-        <id name = "stockId" type="string" column="stockid" />
-        <property name="stockName" column="stockname" type="string" />
+    <class name="com.moyang.hibernate.StockInfo" table="stock_info">
+        <id name = "stockId" type="string" column="stock_id" />
+        <property name="stockName" column="stock_name" type="string" />
         <property name="marketplace" column="marketplace" type="string" />
     </class>
 

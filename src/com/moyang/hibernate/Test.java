@@ -15,7 +15,7 @@ public class Test {
         config.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         config.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
         config.setProperty("hibernate.connection.url"
-                , "jdbc:mysql://localhost:3306/stock");
+                , "jdbc:mysql://localhost:3306/money");
         config.setProperty("hibernate.connection.username", "root");
         config.setProperty("hibernate.connection.password", "123456");
 
@@ -27,6 +27,7 @@ public class Test {
         Transaction tx = session.beginTransaction();
 
         StockInfo info = new StockInfo("000001", "浦发银行", "sz");
+        session.delete(info);
         session.save(info);
         tx.commit();
         session.close();
