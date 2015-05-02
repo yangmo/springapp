@@ -8,6 +8,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.moyang.api.Yahoo.YahooHistory;
+import com.moyang.common.JsonSerializer;
 import org.springframework.stereotype.Controller;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -63,5 +65,19 @@ public class StockViewController implements Serializable {
         mav.addObject("paras", paras);
         mav.addObject("json", paras.toCanvas());
         return mav;
+    }
+
+    public static void main(String[] args){
+        QueryParas paras = new QueryParas();
+        paras.setEnd(111);
+        paras.setKAverages("5");
+        paras.setStart(0);
+        paras.setStockId("600030");
+        YahooHistory history = new YahooHistory("600030");
+        for(StockDaily daily : history.getYahooHistory()){
+            System.out.println(daily.getDate().toString());
+        }
+        System.out.println(JsonSerializer.serialize(new YahooHistory("600030")));
+       // System.out.print(JsonSerializer.serialize(paras));
     }
 }

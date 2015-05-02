@@ -9,6 +9,7 @@ import com.moyang.common.StockNameUtil;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 
 /**
  * Created by yangmo on 15-1-24.
@@ -50,8 +51,8 @@ public class SnapShootStore {
 
         for(SnapShoot snapShoot : resultList){
             if(snapShoot.getDatumList() != null){
-                String dateStr =  snapShoot.getDatumList().get(0).getDateStr();
-                int end   = DateUtil.daysFromNow(dateStr) + Constants.INTERVAL;
+                Date date =  snapShoot.getDatumList().get(0).getDate();
+                int end   = DateUtil.daysFromNow(date) + Constants.INTERVAL;
                 int start = end - 1 * Constants.INTERVAL;
 
                 System.out.println(

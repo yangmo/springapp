@@ -27,7 +27,7 @@ public class DailyUpdateTask {
     public static void updateStockToDate(String stockId, String dateStr) throws Exception{
         YahooHistory history = new YahooHistory(stockId);
 
-        String lastUpdate = history.getYahooHistory().get(history.getYahooHistory().size() - 1).getDateStr();
+        String lastUpdate = Constants.DATE_FORMAT.format(history.getYahooHistory().get(history.getYahooHistory().size() - 1).getDate());
         if(lastUpdate.equals(dateStr)){
             return;
         }

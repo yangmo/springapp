@@ -18,7 +18,7 @@ public class Constants {
     /**
      *
      */
-    public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("YYYY-MM-dd");
+    public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
     public static final DecimalFormat DOUBLE_FORMAT = new DecimalFormat("####.00");
 
     /**
@@ -29,4 +29,7 @@ public class Constants {
 
     public static final String LATEST_DAY = "2015-04-30";
 
+    public static void main(String[] args) throws Exception{
+        System.out.println(DATE_FORMAT.parse("2003-01-09"));
+    }
 }

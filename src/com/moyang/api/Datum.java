@@ -1,15 +1,17 @@
 package com.moyang.api;
 
+import java.util.Date;
+
 /**
  * Created by yangmo on 15-1-24.
  */
 public class Datum {
-    private String dateStr;
+    private Date date;
     private double val;
 
-    public Datum(double val, String dateStr){
+    public Datum(double val, Date date){
         this.val = val;
-        this.dateStr = dateStr;
+        this.date = date;
     }
 
     public double getVal(){
@@ -19,11 +21,11 @@ public class Datum {
         this.val = val;
     }
 
-    public String getDateStr(){
-        return dateStr;
+    public Date getDate(){
+        return date;
     }
 
-    public void setDateStr(String dateStr){
-        this.dateStr = dateStr;
+    public void setDate(Date date){
+        this.date = date;
     }
 }

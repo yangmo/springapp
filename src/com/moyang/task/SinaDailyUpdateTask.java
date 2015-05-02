@@ -24,11 +24,11 @@ public class SinaDailyUpdateTask {
         return Constants.DATE_FORMAT.format(date);
     }
 
-    public static void updateStockToDate(String stockId, String dateStr) throws Exception{
+    public static void updateStockToDate(String stockId, Date date) throws Exception{
         YahooHistory history = new YahooHistory(stockId);
 
-        String lastUpdate = history.getYahooHistory().get(history.getYahooHistory().size() - 1).getDateStr();
-        if(lastUpdate.equals(dateStr)){
+        Date lastUpdate = history.getYahooHistory().get(history.getYahooHistory().size() - 1).getDate();
+        if(lastUpdate.equals(date)){
             return;
         }
 
@@ -61,7 +61,7 @@ public class SinaDailyUpdateTask {
 
 
             try{
-                updateStockToDate(stockId, Constants.LATEST_DAY);
+                updateStockToDate(stockId,Constants.DATE_FORMAT.parse(Constants.LATEST_DAY));
             } catch (Exception e) {
                 failed.add(stockId);
                 System.out.println(e.getLocalizedMessage());

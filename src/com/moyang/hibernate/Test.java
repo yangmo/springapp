@@ -10,7 +10,7 @@ import org.hibernate.cfg.Configuration;
  */
 public class Test {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Configuration config = new Configuration();
         config.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         config.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
@@ -20,6 +20,7 @@ public class Test {
         config.setProperty("hibernate.connection.password", "123456");
 
         config.addClass(StockInfo.class);
+        config.addClass(StockDaily.class);
         SessionFactory factory = config.buildSessionFactory();
 
         Session session = factory.openSession();
@@ -27,8 +28,11 @@ public class Test {
         Transaction tx = session.beginTransaction();
 
         StockInfo info = new StockInfo("000001", "浦发银行", "sz");
+        StockDaily daily = new StockDaily("test", "2015-05-01,35.7,35.7,35.7,35.7,0,35.7\n");
         session.delete(info);
         session.save(info);
+        session.delete(daily);
+        session.save(daily);
         tx.commit();
         session.close();
     }

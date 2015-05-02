@@ -14,13 +14,13 @@ public class DateUtil {
 
     private static final YahooHistory sampleHistory = new YahooHistory("000001");
 
-    public static int daysFromNow(String dateStr) throws ParseException{
+    public static int daysFromNow(Date date) throws ParseException{
 
         int index = 0;
         int length = sampleHistory.getYahooHistory().size();
 
         for(StockDaily datum : sampleHistory.getYahooHistory()) {
-            if (datum.getDateStr().equals(dateStr)) {
+            if (datum.getDate().equals(date)) {
                 return length - index;
             }
             index++;

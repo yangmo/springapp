@@ -85,7 +85,7 @@
       or a Contribution incorporated within the Work constitutes direct
       or contributory patent infringement, then any patent licenses
       granted to You under this License for that Work shall terminate
-      as of the dateStr such litigation is filed.
+      as of the date such litigation is filed.
 
    4. Redistribution. You may reproduce and distribute copies of the
       Work or Derivative Works thereof in any medium, with or without
@@ -388,7 +388,7 @@ If Recipient institutes patent litigation against any entity (including a
 cross-claim or counterclaim in a lawsuit) alleging that the Program itself
 (excluding combinations of the Program with other software or hardware)
 infringes such Recipient's patent(s), then such Recipient's rights granted under
-Section 2(b) shall terminate as of the dateStr such litigation is filed.
+Section 2(b) shall terminate as of the date such litigation is filed.
 
 All Recipient's rights under this Agreement shall terminate if it fails to
 comply with any of the material terms or conditions of this Agreement and does
@@ -657,12 +657,12 @@ provision valid and enforceable.
 If Recipient institutes patent litigation against a Contributor with respect to
 a patent applicable to software (including a cross-claim or counterclaim in a
 lawsuit), then any patent licenses granted by that Contributor to such Recipient
-under this Agreement shall terminate as of the dateStr such litigation is filed. In
+under this Agreement shall terminate as of the date such litigation is filed. In
 addition, if Recipient institutes patent litigation against any entity
 (including a cross-claim or counterclaim in a lawsuit) alleging that the Program
 itself (excluding combinations of the Program with other software or hardware)
 infringes such Recipient's patent(s), then such Recipient's rights granted under
-Section 2(b) shall terminate as of the dateStr such litigation is filed.
+Section 2(b) shall terminate as of the date such litigation is filed.
 
 All Recipient's rights under this Agreement shall terminate if it fails to
 comply with any of the material terms or conditions of this Agreement and does
@@ -802,7 +802,7 @@ COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0
             (or portions thereof).
 
         (c) The licenses granted in Sections 2.1(a) and (b) are effective on the
-            dateStr Initial Developer first distributes or otherwise makes the
+            date Initial Developer first distributes or otherwise makes the
             Original Software available to a third party under the terms of this
             License.
 
@@ -835,7 +835,7 @@ COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0
             combination).
 
         (c) The licenses granted in Sections 2.2(a) and 2.2(b) are effective on
-            the dateStr Contributor first distributes or otherwise makes the
+            the date Contributor first distributes or otherwise makes the
             Modifications available to a third party.
 
         (d) Notwithstanding Section 2.2(b) above, no patent license is granted:

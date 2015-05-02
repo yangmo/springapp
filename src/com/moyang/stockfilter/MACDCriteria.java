@@ -22,8 +22,8 @@ public class MACDCriteria extends Criteria{
     @Override
     public boolean meetCriteria(YahooHistory history) {
         ArrayList<StockDaily> yahooList = history.getYahooHistory();
-        ArrayList<AverageDatum> macdList = MACD.getMACD(history.getStockId(), yahooList.get(0).getDateStr()
-                , yahooList.get(yahooList.size() - 1).getDateStr());
+        ArrayList<AverageDatum> macdList = MACD.getMACD(history.getStockId(), yahooList.get(0).getDate()
+                , yahooList.get(yahooList.size() - 1).getDate());
         if (macdList.get(macdList.size() - 1).getVal() <= 0) {
             return false;
         }

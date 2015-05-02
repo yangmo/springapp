@@ -2,17 +2,19 @@ package com.moyang.model;
 
 import com.moyang.api.Datum;
 
+import java.util.Date;
+
 /**
  * Created by yangmo on 15-1-21.
  */
 public class AverageDatum  extends Datum {
 
-    public AverageDatum(double val, String dateStr){
-        super(val, dateStr);
+    public AverageDatum(double val, Date date){
+        super(val, date);
     }
 
     public int compareTo(AverageDatum obj){
-        return compareDateStr(getDateStr(), obj.getDateStr());
+        return getDate().compareTo(obj.getDate());
     }
 
     public static int compareDateStr(String a, String b){
@@ -26,6 +28,6 @@ public class AverageDatum  extends Datum {
 
     @Override
     public String toString(){
-        return getDateStr() + "\t" + getVal();
+        return getDate() + "\t" + getVal();
     }
 }

@@ -2,9 +2,12 @@ package com.moyang.hibernate;
 
 import com.moyang.common.Constants;
 
-public class StockDaily {
+import java.io.Serializable;
+import java.util.Date;
+
+public class StockDaily implements Serializable{
 	private String stockId;
-	private String dateStr;
+	private Date date;
 	private double open;
 	private double high;
 	private double low;
@@ -20,7 +23,12 @@ public class StockDaily {
 		this.stockId = stockId;
 
 		String[] components = msg.split(",");
-		dateStr = components[0];
+		try {
+			date = Constants.DATE_FORMAT.parse(components[0]);
+			System.out.println(components[0]);
+		} catch (Exception e){
+			throw  new RuntimeException("Invalid Date " + components[0]);
+		}
 		open = Double.valueOf(components[1]);
 		high = Double.valueOf(components[2]);
 		low = Double.valueOf(components[3]);
@@ -32,7 +40,7 @@ public class StockDaily {
 
 	@Override
 	public String toString(){
-		return dateStr+","+ Constants.DOUBLE_FORMAT.format(open)+","
+		return date +","+ Constants.DOUBLE_FORMAT.format(open)+","
 				+ Constants.DOUBLE_FORMAT.format(high)+","
 				+ Constants.DOUBLE_FORMAT.format(low)+","
 		        + Constants.DOUBLE_FORMAT.format(close)+","
@@ -77,11 +85,11 @@ public class StockDaily {
 	public void setOpen(double open) {
 		this.open = open;
 	}
-	public String getDateStr() {
-		return dateStr;
+	public Date getDate() {
+		return date;
 	}
-	public void setDateStr(String dateStr) {
-		this.dateStr = dateStr;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public long getVolume() {

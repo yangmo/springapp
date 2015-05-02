@@ -1,6 +1,7 @@
 package com.moyang.backtesting;
 
 import com.moyang.api.MACD;
+import com.moyang.common.Constants;
 import com.moyang.hibernate.StockDaily;
 import com.moyang.api.Yahoo.YahooHistory;
 import com.moyang.common.DateUtil;
@@ -9,6 +10,7 @@ import com.moyang.model.AverageDatum;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 
 /**
  * Created by yangmo on 15-2-27.
@@ -17,13 +19,14 @@ public class MACDEvaluator {
     private static final double STOP_LOSS = -10.05;
     private static final DecimalFormat dfDisplay = new DecimalFormat("#.00");
 
-    public static void main(String[] args){
+    public static void main(String[] args)throws Exception{
 
         String stockId = "600755";
         String start = "2000-01-01";
         String end  = "2015-02-27";
 
-        ArrayList<TradingRecord> records = generateTradingRecord(stockId, start, end);
+        ArrayList<TradingRecord> records = generateTradingRecord(stockId, Constants.DATE_FORMAT.parse(start),
+                Constants.DATE_FORMAT.parse(end));
 
         Collections.sort(records);
 
@@ -41,11 +44,11 @@ public class MACDEvaluator {
 
     public static ArrayList<TradingRecord> generateTradingRecord(String stockId){
         YahooHistory history = new YahooHistory(stockId);
-        return generateTradingRecord(stockId, history.getYahooHistory().get(0).getDateStr()
-                , history.getYahooHistory().get(history.getYahooHistory().size() - 1).getDateStr());
+        return generateTradingRecord(stockId, history.getYahooHistory().get(0).getDate()
+                , history.getYahooHistory().get(history.getYahooHistory().size() - 1).getDate());
     }
 
-    public static ArrayList<TradingRecord> generateTradingRecord(String stockId, String startDate, String endDate){
+    public static ArrayList<TradingRecord> generateTradingRecord(String stockId, Date startDate, Date endDate){
 
         ArrayList<AverageDatum> macdList = MACD.getMACD(stockId, startDate, endDate);
         ArrayList<TradingRecord> recordList = new ArrayList<TradingRecord>();
@@ -54,15 +57,15 @@ public class MACDEvaluator {
 
         for(int i = 2; i < macdList.size() - 1; i++){
             if(macdList.get(i-2).getVal() <= 0 && macdList.get(i - 1).getVal() > 0){
-                String buyDate = macdList.get(i).getDateStr();
+                Date buyDate = macdList.get(i).getDate();
                 StockDaily datum = history.findDatumAt(buyDate);
                 double buyPrice =  datum.getOpen() * datum.getAdjClose() / datum.getClose();
                 buyPrice = Double.valueOf(dfDisplay.format(buyPrice));
-                String sellDate = "";
+                Date sellDate = null;
 
                 for(int j = i ; j < macdList.size(); j ++){
-                    sellDate = macdList.get(j).getDateStr();
-                    if (macdList.get(j - 1).getVal() >= 0&& !isStopLoss(buyPrice, history.findDatumAt(macdList.get(j-1).getDateStr()).getAdjClose())
+                    sellDate = macdList.get(j).getDate();
+                    if (macdList.get(j - 1).getVal() >= 0&& !isStopLoss(buyPrice, history.findDatumAt(macdList.get(j-1).getDate()).getAdjClose())
                             ){
                         i++;
                     } else {

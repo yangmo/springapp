@@ -2,6 +2,7 @@ package com.moyang.model;
 
 import com.moyang.api.Converter;
 import com.moyang.api.Yahoo.YahooAPI;
+import com.moyang.common.Constants;
 import com.moyang.hibernate.StockDaily;
 import com.moyang.model.canvasJS.Canvas;
 import com.moyang.model.canvasJS.DataPoints;
@@ -41,7 +42,7 @@ public class QueryParas {
 		for(String average: averages) {
 			int k = Integer.valueOf(average);
 			DataPoints points = new DataPoints(k + "", Converter.averageToDataPointList(AverageUtil
-				.getKAverage(getStockId(), k, datum.get(0).getDateStr(), datum.get(datum.size() - 1).getDateStr())));
+				.getKAverage(getStockId(), k, datum.get(0).getDate(), datum.get(datum.size() - 1).getDate())));
 			list.add(points);
 		}
 

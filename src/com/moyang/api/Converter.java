@@ -13,7 +13,7 @@ public class Converter {
 		ArrayList<DataPoint> result = new ArrayList<DataPoint>();
 		int count = 0;
 		for(StockDaily datum : data){
-			result.add(new DataPoint(datum.getDateStr(), datum.getAdjClose()));
+			result.add(new DataPoint(datum.getDate(), datum.getAdjClose()));
 		}
 		
 		return result;
@@ -23,7 +23,7 @@ public class Converter {
 		ArrayList<DataPoint> result = new ArrayList<DataPoint>();
 		int count = 0;
 		for(AverageDatum datum : data){
-			result.add(new DataPoint(datum.getDateStr(), datum.getVal()));
+			result.add(new DataPoint(datum.getDate(), datum.getVal()));
 		}
 
 		return result;

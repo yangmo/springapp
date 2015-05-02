@@ -28,7 +28,7 @@ public class HighVolumeCriteria extends Criteria{
 
     private long computeRecentAverageVol(YahooHistory history){
         int size = history.getYahooHistory().size();
-        if(!history.getYahooHistory().get(size - 1).getDateStr().equals(Constants.LATEST_DAY)){
+        if(!history.getYahooHistory().get(size - 1).getDate().equals(Constants.LATEST_DAY)){
             return 0;
         }
         long recentVolume = history.getYahooHistory().get(size - 1).getVolume();

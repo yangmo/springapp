@@ -32,7 +32,7 @@ public class SinaAPI {
 		String[] contents = rawInput.split(",");
 		StockDaily datum = new StockDaily();
 
-		datum.setDateStr(Constants.LATEST_DAY);
+		datum.setDate(Constants.DATE_FORMAT.parse(Constants.LATEST_DAY));
         datum.setAdjClose(Double.valueOf(contents[3]));
         datum.setClose(Double.valueOf(contents[3]));
 		datum.setHigh(Double.valueOf(contents[4]));

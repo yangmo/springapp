@@ -8,9 +8,9 @@ import java.util.Date;
  * Created by yangmo on 15-2-27.
  */
 public class TradingRecord implements Comparable<TradingRecord>{
-    private String buyDate;
+    private Date buyDate;
     private double buyPrice;
-    private String sellDate;
+    private Date sellDate;
     private double sellPrice;
 
     private int holdingDays;
@@ -18,7 +18,7 @@ public class TradingRecord implements Comparable<TradingRecord>{
     private double profitPercent;
 
 
-    public TradingRecord(String buyDate, double buyPrice, String sellDate, double sellPrice){
+    public TradingRecord(Date buyDate, double buyPrice, Date sellDate, double sellPrice){
         this.buyDate = buyDate;
         this.buyPrice = buyPrice;
         this.sellDate = sellDate;
@@ -54,11 +54,11 @@ public class TradingRecord implements Comparable<TradingRecord>{
         return (sellPrice - buyPrice) / buyPrice;
     }
 
-    public String getBuyDate(){
+    public Date getBuyDate(){
         return buyDate;
     }
 
-    public void setBuyDate(String buyDate){
+    public void setBuyDate(Date buyDate){
         this.buyDate = buyDate;
     }
 
@@ -70,11 +70,11 @@ public class TradingRecord implements Comparable<TradingRecord>{
         this.buyPrice = buyPrice;
     }
 
-    public String getSellDate(){
+    public Date getSellDate(){
         return sellDate;
     }
 
-    public void setSellDate(String sellDate){
+    public void setSellDate(Date sellDate){
         this.sellDate = sellDate;
     }
 

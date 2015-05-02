@@ -20,7 +20,7 @@ public class SnapShoot implements Comparable<SnapShoot>{
 
     @Override
     public String toString(){
-        return stockId+","+datumList.get(0).getDateStr()+","+datumList.get(datumList.size()-1).getDateStr();
+        return stockId+","+datumList.get(0).getDate()+","+datumList.get(datumList.size()-1).getDate();
     }
     public int compareTo(SnapShoot obj){
         if(distance == obj.getDistance()){

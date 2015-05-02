@@ -7,6 +7,7 @@ import com.moyang.model.AverageDatum;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by yangmo on 15-2-21.
@@ -25,7 +26,7 @@ public class MACD {
     private static double trimDisplay(double original) {
         return Double.valueOf(dfDisplay.format(original));
     }
-    public static ArrayList<AverageDatum> getMACD(String stockId, String startDate, String endDate){
+    public static ArrayList<AverageDatum> getMACD(String stockId, Date startDate, Date endDate){
         YahooHistory history = new YahooHistory(stockId);
         ArrayList<StockDaily> data = history.getYahooHistory();
         ArrayList<AverageDatum> result = new ArrayList<AverageDatum>();
@@ -33,7 +34,7 @@ public class MACD {
         double shortRatio = (SHORT - 1) / (SHORT + 1);
         double longRatio =  (LONG - 1) / (LONG + 1);
 
-        if(AverageDatum.compareDateStr(data.get(0).getDateStr(), startDate) == 0){
+        if(data.get(0).getDate().equals(startDate)){
             result.add(new AverageDatum(0, startDate));
         }
 
@@ -44,8 +45,8 @@ public class MACD {
         double dea = 2 / (M + 1) * diff ;
         double macd = trimDisplay(2 * (diff - dea));
 
-        if(AverageDatum.compareDateStr(data.get(1).getDateStr(), startDate) >= 0){
-            result.add(new AverageDatum(macd, data.get(1).getDateStr()));
+        if(data.get(1).getDate().compareTo(startDate) >= 0){
+            result.add(new AverageDatum(macd, data.get(1).getDate()));
         }
 
 
@@ -60,13 +61,13 @@ public class MACD {
 
             StockDaily datum = data.get(i);
 
-            String dateString = data.get(i).getDateStr();
+            Date date = data.get(i).getDate();
 
-            if(AverageDatum.compareDateStr(dateString, startDate) >= 0
-                    && AverageDatum.compareDateStr(dateString, endDate)<= 0){
-                result.add(new AverageDatum(macd, dateString));
+            if(date.compareTo(startDate) >= 0
+                    && date.compareTo(endDate)<= 0){
+                result.add(new AverageDatum(macd, date));
             }
-            if(AverageDatum.compareDateStr(dateString, endDate) > 0){
+            if(date.compareTo(endDate) > 0){
                 return result;
             }
 
@@ -75,10 +76,10 @@ public class MACD {
     }
 
 
-    public static void main(String[] args){
+    public static void main(String[] args)throws Exception{
 
      //   ArrayList<AverageDatum> list = getMACD("600030", "2003-01-06", "2003-02-22");
-        ArrayList<AverageDatum> list = getMACD("600489", "2008-02-01", Constants.LATEST_DAY);
+        ArrayList<AverageDatum> list = getMACD("600489", Constants.DATE_FORMAT.parse("2008-11-11"), Constants.DATE_FORMAT.parse(Constants.LATEST_DAY));
 
         for(AverageDatum item : list){
             System.out.println(item);

@@ -22,7 +22,7 @@ public class Test {
 		
 		List<StockDaily> w = PriceInterval.findMostSimilar(expected, new YahooHistory("000737").getYahooHistory());
 		for(StockDaily datum : w){
-			System.out.println(datum.getDateStr() + " " + datum.getAdjClose());
+			System.out.println(datum.getDate() + " " + datum.getAdjClose());
 		}
 	
 		double diff = 10;

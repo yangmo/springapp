@@ -17,37 +17,37 @@ public class YahooHistory {
 
 	/**
 	 * Binary Search
-	 * @param dateStr
+	 * @param date
 	 * @param start
 	 * @param end
 	 * @return
 	 */
-	public StockDaily findDatumAt(String dateStr, int start, int end){
+	public StockDaily findDatumAt(Date date, int start, int end){
 		if(start > end){
 			return null;
 		}
 
 		int middle = (start + end) / 2;
-		String middleDateStr = yahooHistory.get(middle).getDateStr();
+		Date middleDate  = yahooHistory.get(middle).getDate();
 
-		if(middleDateStr.equals(dateStr)){
+		if(middleDate.equals(date)){
 			return yahooHistory.get(middle);
 		}
 
-		if(middleDateStr.compareTo(dateStr) > 0){
-			return findDatumAt(dateStr, start, middle);
+		if(middleDate.compareTo(date) > 0){
+			return findDatumAt(date, start, middle);
 		} else{
-			return findDatumAt(dateStr, middle, end);
+			return findDatumAt(date, middle, end);
 		}
 	}
 
-	public StockDaily findDatumAt(String dateStr){
-		return findDatumAt(dateStr, 0, getYahooHistory().size());
+	public StockDaily findDatumAt(Date date){
+		return findDatumAt(date, 0, getYahooHistory().size());
 	}
 
 	public static void main(String[] args){
 YahooHistory history = new YahooHistory("600030");
-		System.out.println(history.findDatumAt("2015-02-26", 0, history.getYahooHistory().size()).getAdjClose());
+		System.out.println(history.findDatumAt(new Date("2015-02-26"), 0, history.getYahooHistory().size()).getAdjClose());
 	}
 
 	public YahooHistory(String stockId) {
@@ -67,6 +67,7 @@ YahooHistory history = new YahooHistory("600030");
 
 		for(int i = 1; i < data.length; i++){
 			StockDaily datum = new StockDaily(stockId, data[i]);
+			System.out.println("qw  "   + datum.getDate());
 			if(datum.getVolume() < (long) 1){
 				continue;
 			}

@@ -1,6 +1,8 @@
 package com.moyang.common;
 import com.moyang.api.Yahoo.YahooHistory;
 
+import java.util.Date;
+
 /**
  * Created by yangmo on 15-1-27.
  */
@@ -10,9 +12,9 @@ public class StockUtil {
         if(history == null || history.getYahooHistory().size() < 2){
             return false;
         }
-        String dateString = history.getYahooHistory().get(history.getYahooHistory().size()-1).getDateStr();
+        Date date = history.getYahooHistory().get(history.getYahooHistory().size()-1).getDate();
 
-        if(!Constants.LATEST_DAY.equals(dateString)){
+        if(!Constants.LATEST_DAY.equals(Constants.DATE_FORMAT.format(date))){
             return false;
         }
         return true;
