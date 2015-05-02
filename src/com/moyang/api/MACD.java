@@ -1,6 +1,6 @@
 package com.moyang.api;
 
-import com.moyang.api.Yahoo.YahooDatum;
+import com.moyang.hibernate.StockDaily;
 import com.moyang.api.Yahoo.YahooHistory;
 import com.moyang.common.Constants;
 import com.moyang.model.AverageDatum;
@@ -27,7 +27,7 @@ public class MACD {
     }
     public static ArrayList<AverageDatum> getMACD(String stockId, String startDate, String endDate){
         YahooHistory history = new YahooHistory(stockId);
-        ArrayList<YahooDatum> data = history.getYahooHistory();
+        ArrayList<StockDaily> data = history.getYahooHistory();
         ArrayList<AverageDatum> result = new ArrayList<AverageDatum>();
 
         double shortRatio = (SHORT - 1) / (SHORT + 1);
@@ -58,7 +58,7 @@ public class MACD {
             dea = 2 / (M + 1) * diff + dea * (M - 1) / (M + 1);
             macd =trimDisplay(2 * (diff - dea));
 
-            YahooDatum datum = data.get(i);
+            StockDaily datum = data.get(i);
 
             String dateString = data.get(i).getDateStr();
 

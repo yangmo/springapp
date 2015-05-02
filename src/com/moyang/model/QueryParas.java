@@ -2,7 +2,7 @@ package com.moyang.model;
 
 import com.moyang.api.Converter;
 import com.moyang.api.Yahoo.YahooAPI;
-import com.moyang.api.Yahoo.YahooDatum;
+import com.moyang.hibernate.StockDaily;
 import com.moyang.model.canvasJS.Canvas;
 import com.moyang.model.canvasJS.DataPoints;
 import com.moyang.api.AverageUtil;
@@ -26,12 +26,12 @@ public class QueryParas {
 		kAverages = "5,10,30,89";
 	}
 
-	public List<YahooDatum> getYahooDatumList() throws Exception{
+	public List<StockDaily> getYahooDatumList() throws Exception{
 		return YahooAPI.getHistoryBetween(getStockId(), getStart(), getEnd());
 	}
 
 	public Canvas toCanvas()throws Exception{
-		List<YahooDatum> datum = getYahooDatumList();
+		List<StockDaily> datum = getYahooDatumList();
 
 		ArrayList<DataPoints> list   = new ArrayList<DataPoints>();
 		list.add(new DataPoints("Close", Converter.toDataPointList(datum)));

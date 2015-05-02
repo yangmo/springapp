@@ -2,28 +2,28 @@ package com.moyang.historyrepeat;
 
 import java.util.List;
 
-import com.moyang.api.Yahoo.YahooDatum;
+import com.moyang.hibernate.StockDaily;
 import com.moyang.api.Yahoo.YahooHistory;
 
 public class PriceInterval {
 
 	public static final double SLOPE_RANGE = 0.2;
 	
-	public static double findDistance(List<YahooDatum> expected, String stockId) throws Exception{
-		List<YahooDatum> whole = new YahooHistory(stockId).getYahooHistory();
-	    List<YahooDatum> actual = PriceInterval.findMostSimilar(expected, whole);
+	public static double findDistance(List<StockDaily> expected, String stockId) throws Exception{
+		List<StockDaily> whole = new YahooHistory(stockId).getYahooHistory();
+	    List<StockDaily> actual = PriceInterval.findMostSimilar(expected, whole);
 
 
 	    return getDiff(expected, actual);
 	}
 
-	public static List<YahooDatum> findMostSimilar(List<YahooDatum> expected, List<YahooDatum> whole)
+	public static List<StockDaily> findMostSimilar(List<StockDaily> expected, List<StockDaily> whole)
 		throws InterruptedException{
 		double mostSimilarVal = 200;
 		int pos = 0;
 		
 		int length = expected.size();
-		List<YahooDatum> actual;
+		List<StockDaily> actual;
 		/**
 		 * TODO
 		 */
@@ -42,7 +42,7 @@ public class PriceInterval {
 		return whole.subList(pos, pos + length);
 	}
 	
-	public static double getDiff(List<YahooDatum> expected, List<YahooDatum> actual){
+	public static double getDiff(List<StockDaily> expected, List<StockDaily> actual){
 		if(!isValid(expected, actual) || !isWithinSlopeRange(expected, actual)){
 			return Double.MAX_VALUE;
 		}
@@ -58,7 +58,7 @@ public class PriceInterval {
 		return result;
 	}
 	
-	public static boolean isValid(List<YahooDatum> expected, List<YahooDatum> actual){
+	public static boolean isValid(List<StockDaily> expected, List<StockDaily> actual){
 		if(expected == null || actual == null){
 			return false;
 		}
@@ -70,7 +70,7 @@ public class PriceInterval {
 		return true;
 	}
 	
-	public static boolean isWithinSlopeRange(List<YahooDatum> expected, List<YahooDatum> actual){
+	public static boolean isWithinSlopeRange(List<StockDaily> expected, List<StockDaily> actual){
 		int length = expected.size() - 1;
 		double slope1 = expected.get(length).getAdjClose() / expected.get(0).getAdjClose();
 		double slope2 = actual.get(length).getAdjClose() / actual.get(0).getAdjClose();

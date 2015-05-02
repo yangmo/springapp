@@ -3,8 +3,7 @@ package com.moyang.api.Yahoo;
 import java.io.File;
 import java.util.*;
 
-import com.moyang.api.Yahoo.YahooAPI;
-import com.moyang.api.Yahoo.YahooDatum;
+import com.moyang.hibernate.StockDaily;
 import com.moyang.common.FileUtil;
 import com.moyang.common.MarketplaceUtil;
 import com.moyang.common.Constants;
@@ -14,7 +13,7 @@ public class YahooHistory {
 
 	private String stockId ;
 	private String marketplace;
-	private ArrayList<YahooDatum> yahooHistory = new ArrayList<YahooDatum>();
+	private ArrayList<StockDaily> yahooHistory = new ArrayList<StockDaily>();
 
 	/**
 	 * Binary Search
@@ -23,7 +22,7 @@ public class YahooHistory {
 	 * @param end
 	 * @return
 	 */
-	public YahooDatum findDatumAt(String dateStr, int start, int end){
+	public StockDaily findDatumAt(String dateStr, int start, int end){
 		if(start > end){
 			return null;
 		}
@@ -42,7 +41,7 @@ public class YahooHistory {
 		}
 	}
 
-	public YahooDatum findDatumAt(String dateStr){
+	public StockDaily findDatumAt(String dateStr){
 		return findDatumAt(dateStr, 0, getYahooHistory().size());
 	}
 
@@ -58,16 +57,16 @@ YahooHistory history = new YahooHistory("600030");
 		}
 		String rawInput = FileUtil.getContent(getFilePath(stockId));
 		this.stockId = stockId;
-		yahooHistory.addAll(rawInputToDatumList(rawInput));
+		yahooHistory.addAll(rawInputToDatumList(stockId, rawInput));
 	}
 
-	public static List<YahooDatum> rawInputToDatumList(String rawInput){
+	public static List<StockDaily> rawInputToDatumList(String stockId, String rawInput){
 		String[] data = rawInput.split("\n");
 
-		ArrayList<YahooDatum> list = new ArrayList<YahooDatum>();
+		ArrayList<StockDaily> list = new ArrayList<StockDaily>();
 
 		for(int i = 1; i < data.length; i++){
-			YahooDatum datum = new YahooDatum(data[i]);
+			StockDaily datum = new StockDaily(stockId, data[i]);
 			if(datum.getVolume() < (long) 1){
 				continue;
 			}
@@ -96,10 +95,10 @@ YahooHistory history = new YahooHistory("600030");
 	public void setStockId(String stockId) {
 		this.stockId = stockId;
 	}
-	public ArrayList<YahooDatum> getYahooHistory() {
+	public ArrayList<StockDaily> getYahooHistory() {
 		return yahooHistory;
 	}
-	public void setYahooHistory(ArrayList<YahooDatum> yahooHistory) {
+	public void setYahooHistory(ArrayList<StockDaily> yahooHistory) {
 		this.yahooHistory = yahooHistory;
 	}
 	

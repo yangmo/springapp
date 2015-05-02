@@ -21,7 +21,7 @@ import com.moyang.model.canvasJS.Data;
 import com.moyang.model.canvasJS.DataPoints;
 
 import com.moyang.api.Yahoo.YahooAPI;
-import com.moyang.api.Yahoo.YahooDatum;
+import com.moyang.hibernate.StockDaily;
 import com.moyang.api.Converter;
 import com.moyang.model.QueryParas;
 @Scope("session")
@@ -47,7 +47,7 @@ public class StockViewController implements Serializable {
         
         ModelAndView mav = new ModelAndView(VIEW_NAME);
         mav.addObject("paras", new QueryParas());
-        List<YahooDatum> datum = YahooAPI.getRecentClose("600030", 2350);
+        List<StockDaily> datum = YahooAPI.getRecentClose("600030", 2350);
         ArrayList<DataPoints> list   = new ArrayList<DataPoints>();
         list.add(new DataPoints("Close", Converter.toDataPointList(datum)));
         Data data = new Data( list);

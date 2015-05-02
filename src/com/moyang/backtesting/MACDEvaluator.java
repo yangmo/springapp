@@ -1,9 +1,8 @@
 package com.moyang.backtesting;
 
 import com.moyang.api.MACD;
-import com.moyang.api.Yahoo.YahooDatum;
+import com.moyang.hibernate.StockDaily;
 import com.moyang.api.Yahoo.YahooHistory;
-import com.moyang.common.Constants;
 import com.moyang.common.DateUtil;
 import com.moyang.model.AverageDatum;
 
@@ -56,7 +55,7 @@ public class MACDEvaluator {
         for(int i = 2; i < macdList.size() - 1; i++){
             if(macdList.get(i-2).getVal() <= 0 && macdList.get(i - 1).getVal() > 0){
                 String buyDate = macdList.get(i).getDateStr();
-                YahooDatum datum = history.findDatumAt(buyDate);
+                StockDaily datum = history.findDatumAt(buyDate);
                 double buyPrice =  datum.getOpen() * datum.getAdjClose() / datum.getClose();
                 buyPrice = Double.valueOf(dfDisplay.format(buyPrice));
                 String sellDate = "";

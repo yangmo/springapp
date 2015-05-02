@@ -2,7 +2,6 @@ package com.moyang.task;
 
 import com.moyang.api.SinaAPI;
 import com.moyang.api.Yahoo.YahooAPI;
-import com.moyang.api.Yahoo.YahooDatum;
 import com.moyang.api.Yahoo.YahooHistory;
 import com.moyang.common.Constants;
 import com.moyang.common.DateUtil;

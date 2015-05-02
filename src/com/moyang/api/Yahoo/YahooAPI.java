@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.moyang.common.*;
 import com.moyang.common.downloader.SimpleWebDownloader;
+import com.moyang.hibernate.StockDaily;
 
 public class YahooAPI {
 
@@ -27,9 +28,9 @@ public class YahooAPI {
 		return request += Constants.SH.equals(marketplace) ? ".ss" : ".sz";
 	}
 	
-	public static List<YahooDatum> getRecentClose(String stockId, int days) throws Exception{
+	public static List<StockDaily> getRecentClose(String stockId, int days) throws Exception{
 
-		List<YahooDatum> data = new YahooHistory(stockId).getYahooHistory();
+		List<StockDaily> data = new YahooHistory(stockId).getYahooHistory();
 		
 		int startPos = (data.size() - days) >= 0 ? (data.size() - days) : 0; 
 		
@@ -44,13 +45,13 @@ public class YahooAPI {
 	 * @return
 	 * @throws Exception
 	 */
-	public static List<YahooDatum> getHistoryBetween(String stockId, int start, int end) throws Exception{
+	public static List<StockDaily> getHistoryBetween(String stockId, int start, int end) throws Exception{
 		YahooHistory history = new YahooHistory(stockId);
 		if(history == null){
 			return null;
 		}
 
-		List<YahooDatum> data = history.getYahooHistory();
+		List<StockDaily> data = history.getYahooHistory();
 		int length = data.size();
 		if(data == null || length == 0){
             return null;
@@ -104,7 +105,7 @@ public class YahooAPI {
 	}
 
 
-	public static List<YahooDatum> getHistoryBetween(String stockId, String startStr, String endStr)
+	public static List<StockDaily> getHistoryBetween(String stockId, String startStr, String endStr)
 			throws Exception{
 
 		String request = getBasicRequest(stockId);
@@ -115,6 +116,6 @@ public class YahooAPI {
 		request+="&g=d";
 		String rawInput = SimpleWebDownloader.getAsString(request);
 
-		return YahooHistory.rawInputToDatumList(rawInput);
+		return YahooHistory.rawInputToDatumList(stockId, rawInput);
 	}
 }

@@ -2,13 +2,13 @@ package com.moyang.historyrepeat;
 
 import java.util.List;
 
-import com.moyang.api.Yahoo.YahooDatum;
+import com.moyang.hibernate.StockDaily;
 import com.moyang.api.Yahoo.YahooHistory;
 import com.moyang.common.StockNameUtil;
 
 public class Test {
 
-	public static List<YahooDatum> getExpectedList(String stockId, int days) throws Exception{
+	public static List<StockDaily> getExpectedList(String stockId, int days) throws Exception{
 		YahooHistory history = new YahooHistory(stockId);
 		int length = history.getYahooHistory().size();
 		return history.getYahooHistory().subList(length - days, length);
@@ -18,10 +18,10 @@ public class Test {
 		String target = "600030";
 		YahooHistory history = new YahooHistory(target);
 		int length = history.getYahooHistory().size();
-		List<YahooDatum> expected = history.getYahooHistory().subList(length-31, length);
+		List<StockDaily> expected = history.getYahooHistory().subList(length-31, length);
 		
-		List<YahooDatum> w = PriceInterval.findMostSimilar(expected, new YahooHistory("000737").getYahooHistory());
-		for(YahooDatum datum : w){
+		List<StockDaily> w = PriceInterval.findMostSimilar(expected, new YahooHistory("000737").getYahooHistory());
+		for(StockDaily datum : w){
 			System.out.println(datum.getDateStr() + " " + datum.getAdjClose());
 		}
 	

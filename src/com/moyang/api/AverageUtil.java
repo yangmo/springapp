@@ -1,6 +1,6 @@
 package com.moyang.api;
 
-import com.moyang.api.Yahoo.YahooDatum;
+import com.moyang.hibernate.StockDaily;
 import com.moyang.api.Yahoo.YahooHistory;
 import com.moyang.model.AverageDatum;
 
@@ -20,19 +20,19 @@ public class AverageUtil {
     public static ArrayList<AverageDatum> getKAverage(YahooHistory history, int k, String startDate, String endDate)
     {
 
-        ArrayList<YahooDatum> data = history.getYahooHistory();
+        ArrayList<StockDaily> data = history.getYahooHistory();
         ArrayList<AverageDatum> kAverage = new ArrayList<AverageDatum>();
 
         double sum = 0;
 
         for(int i = 0; i < k; i++){
-            YahooDatum datum = data.get(i);
+            StockDaily datum = data.get(i);
             kAverage.add(new AverageDatum(datum.getAdjClose(), datum.getDateStr()));
             sum += datum.getAdjClose();
         }
 
         for(int i = k; i < data.size(); i++){
-            YahooDatum datum = data.get(i);
+            StockDaily datum = data.get(i);
             sum += datum.getAdjClose() - data.get(i-k).getAdjClose();
             kAverage.add(new AverageDatum(sum/k, datum.getDateStr()));
         }
@@ -47,19 +47,19 @@ public class AverageUtil {
         }
         return result;
     }
-    public static ArrayList<AverageDatum> getKAverage(int k, List<YahooDatum> data){
+    public static ArrayList<AverageDatum> getKAverage(int k, List<StockDaily> data){
         ArrayList<AverageDatum> kAverage = new ArrayList<AverageDatum>();
 
         double sum = 0;
 
         for(int i = 0; i < k; i++){
-            YahooDatum datum = data.get(i);
+            StockDaily datum = data.get(i);
             kAverage.add(new AverageDatum(datum.getAdjClose(), datum.getDateStr()));
             sum += datum.getAdjClose();
         }
 
         for(int i = k; i < data.size(); i++){
-            YahooDatum datum = data.get(i);
+            StockDaily datum = data.get(i);
             sum += datum.getAdjClose() - data.get(i-k).getAdjClose();
             kAverage.add(new AverageDatum(sum/k, datum.getDateStr()));
         }

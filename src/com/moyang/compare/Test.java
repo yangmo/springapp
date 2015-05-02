@@ -4,7 +4,7 @@ import com.moyang.model.SnapShoot;
 import com.moyang.api.Yahoo.YahooHistory;
 import com.moyang.common.Constants;
 import com.moyang.common.StockNameUtil;
-import com.moyang.api.Yahoo.YahooDatum;
+import com.moyang.hibernate.StockDaily;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public class Test {
     public static List<Double> retrieveDoubleList(SnapShoot snapShoot){
         List<Double> result = new ArrayList<Double>();
 
-        for(YahooDatum datum : snapShoot.getDatumList()){
+        for(StockDaily datum : snapShoot.getDatumList()){
             result.add(datum.getAdjClose());
         }
 

@@ -1,6 +1,6 @@
 package com.moyang.common;
 
-import com.moyang.api.Yahoo.YahooDatum;
+import com.moyang.hibernate.StockDaily;
 import com.moyang.api.Yahoo.YahooHistory;
 
 import java.text.ParseException;
@@ -19,7 +19,7 @@ public class DateUtil {
         int index = 0;
         int length = sampleHistory.getYahooHistory().size();
 
-        for(YahooDatum datum : sampleHistory.getYahooHistory()) {
+        for(StockDaily datum : sampleHistory.getYahooHistory()) {
             if (datum.getDateStr().equals(dateStr)) {
                 return length - index;
             }

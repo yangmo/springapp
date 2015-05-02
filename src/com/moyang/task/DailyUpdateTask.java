@@ -5,7 +5,7 @@ import com.moyang.api.Yahoo.YahooHistory;
 import com.moyang.common.Constants;
 import com.moyang.common.DateUtil;
 import com.moyang.common.StockNameUtil;
-import com.moyang.api.Yahoo.YahooDatum;
+import com.moyang.hibernate.StockDaily;
 
 import java.util.*;
 
@@ -32,7 +32,7 @@ public class DailyUpdateTask {
             return;
         }
 
-        List<YahooDatum> list = YahooAPI.getHistoryBetween(stockId,getStartDateStr(lastUpdate), dateStr);
+        List<StockDaily> list = YahooAPI.getHistoryBetween(stockId,getStartDateStr(lastUpdate), dateStr);
 
 
         history.getYahooHistory().addAll(list);

@@ -1,6 +1,6 @@
 package com.moyang.model;
 
-import com.moyang.api.Yahoo.YahooDatum;
+import com.moyang.hibernate.StockDaily;
 
 import java.util.List;
 
@@ -9,10 +9,10 @@ import java.util.List;
  */
 public class SnapShoot implements Comparable<SnapShoot>{
     private String stockId;
-    private List<YahooDatum> datumList;
+    private List<StockDaily> datumList;
     private double distance;
 
-    public SnapShoot(String stockId, List<YahooDatum> datumList, double distance){
+    public SnapShoot(String stockId, List<StockDaily> datumList, double distance){
         this.stockId = stockId;
         this.datumList = datumList;
         this.distance = distance;
@@ -37,10 +37,10 @@ public class SnapShoot implements Comparable<SnapShoot>{
         this.stockId = stockId;
     }
 
-    public List<YahooDatum> getDatumList(){
+    public List<StockDaily> getDatumList(){
         return datumList;
     }
-    public void setDatumList(List<YahooDatum> datumList){
+    public void setDatumList(List<StockDaily> datumList){
         this.datumList = datumList;
     }
 

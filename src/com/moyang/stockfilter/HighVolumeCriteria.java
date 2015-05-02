@@ -1,6 +1,6 @@
 package com.moyang.stockfilter;
 
-import com.moyang.api.Yahoo.YahooDatum;
+import com.moyang.hibernate.StockDaily;
 import com.moyang.api.Yahoo.YahooHistory;
 import com.moyang.common.Constants;
 
@@ -33,10 +33,10 @@ public class HighVolumeCriteria extends Criteria{
         }
         long recentVolume = history.getYahooHistory().get(size - 1).getVolume();
 
-        List<YahooDatum> list = history.getYahooHistory().subList(size-recentDays-1, size - 1);
+        List<StockDaily> list = history.getYahooHistory().subList(size-recentDays-1, size - 1);
 
         long total = 0;
-        for(YahooDatum datum : list){
+        for(StockDaily datum : list){
             total += datum.getVolume();
         }
 

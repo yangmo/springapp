@@ -1,8 +1,9 @@
-package com.moyang.api.Yahoo;
+package com.moyang.hibernate;
 
 import com.moyang.common.Constants;
 
-public class YahooDatum {
+public class StockDaily {
+	private String stockId;
 	private String dateStr;
 	private double open;
 	private double high;
@@ -11,11 +12,13 @@ public class YahooDatum {
 	private long volume;
 	private double adjClose;
 
-	public YahooDatum(){
+	public StockDaily(){
 
 	}
 
-	public YahooDatum(String msg) {
+	public StockDaily(String stockId, String msg) {
+		this.stockId = stockId;
+
 		String[] components = msg.split(",");
 		dateStr = components[0];
 		open = Double.valueOf(components[1]);
@@ -34,6 +37,14 @@ public class YahooDatum {
 				+ Constants.DOUBLE_FORMAT.format(low)+","
 		        + Constants.DOUBLE_FORMAT.format(close)+","
 				+ volume +","+ Constants.DOUBLE_FORMAT.format(adjClose);
+	}
+
+	public String getStockId(){
+		return stockId;
+	}
+
+	public void setStockId(String stockId){
+		this.stockId = stockId;
 	}
 
 	public double getAdjClose() {

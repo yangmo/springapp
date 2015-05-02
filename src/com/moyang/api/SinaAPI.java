@@ -3,11 +3,10 @@ package com.moyang.api;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.moyang.api.Yahoo.YahooDatum;
+import com.moyang.hibernate.StockDaily;
 import com.moyang.common.Constants;
 import com.moyang.common.MarketplaceUtil;
 import com.moyang.common.RegUtil;
-import com.moyang.common.StockNameUtil;
 import com.moyang.common.downloader.SimpleWebDownloader;
 
 public class SinaAPI {
@@ -26,12 +25,12 @@ public class SinaAPI {
         return Double.valueOf(getPriceFromMsg(rawInput));
 	}
 
-	public static YahooDatum getLastestYahooDatum(String stockId) throws Exception{
+	public static StockDaily getLastestYahooDatum(String stockId) throws Exception{
 		String rawInput = SimpleWebDownloader.getAsString(getRequest(stockId));
 		rawInput.replaceAll("\"", "");
 
 		String[] contents = rawInput.split(",");
-		YahooDatum datum = new YahooDatum();
+		StockDaily datum = new StockDaily();
 
 		datum.setDateStr(Constants.LATEST_DAY);
         datum.setAdjClose(Double.valueOf(contents[3]));

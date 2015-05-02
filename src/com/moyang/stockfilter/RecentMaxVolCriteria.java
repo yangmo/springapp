@@ -1,6 +1,6 @@
 package com.moyang.stockfilter;
 
-import com.moyang.api.Yahoo.YahooDatum;
+import com.moyang.hibernate.StockDaily;
 import com.moyang.api.Yahoo.YahooHistory;
 
 import java.util.List;
@@ -27,9 +27,9 @@ public class RecentMaxVolCriteria extends Criteria {
             return false;
         }
 
-        List<YahooDatum> list = history.getYahooHistory().subList(size - recentDays - 1, size - 1);
+        List<StockDaily> list = history.getYahooHistory().subList(size - recentDays - 1, size - 1);
 
-        for(YahooDatum datum : list){
+        for(StockDaily datum : list){
             if(datum.getVolume() > recentVolume){
                 return false;
             }
