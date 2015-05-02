@@ -25,7 +25,6 @@ public class StockDaily implements Serializable{
 		String[] components = msg.split(",");
 		try {
 			date = Constants.DATE_FORMAT.parse(components[0]);
-			System.out.println(components[0]);
 		} catch (Exception e){
 			throw  new RuntimeException("Invalid Date " + components[0]);
 		}
@@ -40,7 +39,7 @@ public class StockDaily implements Serializable{
 
 	@Override
 	public String toString(){
-		return date +","+ Constants.DOUBLE_FORMAT.format(open)+","
+		return Constants.DATE_FORMAT.format(date) +","+ Constants.DOUBLE_FORMAT.format(open)+","
 				+ Constants.DOUBLE_FORMAT.format(high)+","
 				+ Constants.DOUBLE_FORMAT.format(low)+","
 		        + Constants.DOUBLE_FORMAT.format(close)+","

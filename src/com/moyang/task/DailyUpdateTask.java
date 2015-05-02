@@ -15,7 +15,7 @@ import java.util.*;
 public class DailyUpdateTask {
 
     public static String getStartDateStr(String lastUpdate){
-        Calendar calendar   =   new GregorianCalendar();
+        Calendar calendar = new GregorianCalendar();
         String[] arr = lastUpdate.split("-");
         calendar.set(Integer.valueOf(arr[0]),Integer.valueOf(DateUtil.toMonthInt(arr[1])),Integer.valueOf(arr[2]));
         calendar.add(calendar.DATE, 1);
