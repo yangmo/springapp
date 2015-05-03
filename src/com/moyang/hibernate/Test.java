@@ -12,15 +12,7 @@ public class Test {
 
     public static void main(String[] args) {
         Configuration config = new Configuration();
-        config.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-        config.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-        config.setProperty("hibernate.connection.url"
-                , "jdbc:mysql://localhost:3306/money");
-        config.setProperty("hibernate.connection.username", "root");
-        config.setProperty("hibernate.connection.password", "123456");
-
-        config.addClass(StockInfo.class);
-        config.addClass(StockDaily.class);
+        config.configure();
         SessionFactory factory = config.buildSessionFactory();
 
         Session session = factory.openSession();
