@@ -95,7 +95,7 @@ public class FileUtil {
 
         try {
             fos = new FileOutputStream(file);
-            fos.write(content.getBytes());
+            fos.write(content.getBytes("UTF-8"));
         } finally {
             if(fos != null) {
                 closeFileOutputStream(fos);

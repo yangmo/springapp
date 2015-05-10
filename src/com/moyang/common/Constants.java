@@ -27,7 +27,7 @@ public class Constants {
     public static final int INTERVAL = 120;
 
 
-    public static final String LATEST_DAY = "2015-04-30";
+    public static final String LATEST_DAY = "2015-05-08";
 
     public static void main(String[] args) throws Exception{
         System.out.println(DATE_FORMAT.parse("2003-01-09"));

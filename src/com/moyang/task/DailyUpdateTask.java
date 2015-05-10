@@ -51,7 +51,7 @@ public class DailyUpdateTask {
         int passed = 0;
         ArrayList<String> failed = new ArrayList<String>();
 
-        int omit = 0;
+        int omit = 1530;
 
         for(String stockId: StockNameUtil.getAllStockIds()){
             System.out.print(passed++ +"\t" + stockId + "\n");
