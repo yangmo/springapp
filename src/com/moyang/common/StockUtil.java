@@ -14,7 +14,7 @@ public class StockUtil {
         }
         Date date = history.getYahooHistory().get(history.getYahooHistory().size()-1).getDate();
 
-        if(!Constants.LATEST_DAY.equals(Constants.DATE_FORMAT.format(date))){
+        if(!Constants.MOST_RECENT_TRADING_DAY.equals(Constants.DATE_FORMAT.format(date))){
             return false;
         }
         return true;

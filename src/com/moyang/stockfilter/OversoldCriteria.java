@@ -30,8 +30,8 @@ public class OversoldCriteria extends Criteria{
     public double getDiff(YahooHistory history){
         List<AverageDatum> list = null;
         try {
-            list = AverageUtil.getKAverage(history, kAverage, Constants.DATE_FORMAT.parse(Constants.LATEST_DAY),
-                    Constants.DATE_FORMAT.parse(Constants.LATEST_DAY));
+            list = AverageUtil.getKAverage(history, kAverage, Constants.DATE_FORMAT.parse(Constants.MOST_RECENT_TRADING_DAY),
+                    Constants.DATE_FORMAT.parse(Constants.MOST_RECENT_TRADING_DAY));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

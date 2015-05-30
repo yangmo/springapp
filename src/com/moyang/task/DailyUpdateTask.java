@@ -51,7 +51,7 @@ public class DailyUpdateTask {
         int passed = 0;
         ArrayList<String> failed = new ArrayList<String>();
 
-        int omit = 1530;
+        int omit = 0;
 
         for(String stockId: StockNameUtil.getAllStockIds()){
             System.out.print(passed++ +"\t" + stockId + "\n");
@@ -63,7 +63,7 @@ public class DailyUpdateTask {
 
 
             try{
-                updateStockToDate(stockId, Constants.LATEST_DAY);
+                updateStockToDate(stockId, Constants.MOST_RECENT_TRADING_DAY);
             } catch (Exception e) {
                 failed.add(stockId);
                 System.out.println(e.getLocalizedMessage());

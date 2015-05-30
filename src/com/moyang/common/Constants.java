@@ -3,18 +3,15 @@ package com.moyang.common;
 import java.text.SimpleDateFormat;
 import java.text.DecimalFormat;
 public class Constants {
-	/**
+    public static final String MOST_RECENT_TRADING_DAY = "2015-05-29";
+
+    /**
 	 * Constants for MarketPlace
 	 */
 	public static final String SH = "sh";
     public static final String SZ = "sz";
     
-    /**
-     * 
-     */
-    public static final String LOCAL_ROOT = "/usr/local/apache-tomcat-6.0.43/bin/files/";
-    public static final String STOCK_ROOT = "/usr/local/apache-tomcat-6.0.43/bin/files/stocks/";
-    public static final String STOCKS_TXT = "/usr/local/apache-tomcat-6.0.43/bin/files/Stocks.txt";
+
     /**
      *
      */
@@ -27,9 +24,17 @@ public class Constants {
     public static final int INTERVAL = 120;
 
 
-    public static final String LATEST_DAY = "2015-05-08";
+    public static final String OS_NAME = System.getProperty("os.name");
+    // Different base USR directory for Mac and Linux
+    public static final String USR = OS_NAME.contains("Mac") ? "/Usr/local/tomcat" : "/usr/local/apache-tomcat-6.0.43";
+    /**
+     *
+     */
+    public static String LOCAL_ROOT = USR + "/bin/files/";
+    public static String STOCK_ROOT = USR + "/bin/files/stocks/";
+    public static String STOCKS_TXT = USR + "/bin/files/Stocks.txt";
 
-    public static void main(String[] args) throws Exception{
-        System.out.println(DATE_FORMAT.parse("2003-01-09"));
+    public static void main(String[] args)  {
+        System.out.println(System.getProperty("os.name") + LOCAL_ROOT);
     }
 }

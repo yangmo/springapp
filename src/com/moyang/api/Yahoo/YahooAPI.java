@@ -70,6 +70,7 @@ public class YahooAPI {
 
 	public static void writeYahooHistory(String stockId, String content){
 		String path = getLocalPath(stockId);
+
 		File f = new File(path);
 		try{
 		    f.createNewFile();

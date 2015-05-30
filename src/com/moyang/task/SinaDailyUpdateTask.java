@@ -49,7 +49,7 @@ public class SinaDailyUpdateTask {
         int passed = 0;
         ArrayList<String> failed = new ArrayList<String>();
 
-        int omit = 0;
+        int omit = 1910;
 
         for(String stockId: StockNameUtil.getAllStockIds()){
             System.out.print(passed++ +"\t" + stockId + "\t");
@@ -61,7 +61,7 @@ public class SinaDailyUpdateTask {
 
 
             try{
-                updateStockToDate(stockId,Constants.DATE_FORMAT.parse(Constants.LATEST_DAY));
+                updateStockToDate(stockId,Constants.DATE_FORMAT.parse(Constants.MOST_RECENT_TRADING_DAY));
             } catch (Exception e) {
                 failed.add(stockId);
                 System.out.println(e.getLocalizedMessage());
