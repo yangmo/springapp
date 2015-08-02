@@ -8,6 +8,7 @@ import com.moyang.model.AverageDatum;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by yangmo on 15-2-21.
@@ -29,6 +30,12 @@ public class MACD {
     public static ArrayList<AverageDatum> getMACD(String stockId, Date startDate, Date endDate){
         YahooHistory history = new YahooHistory(stockId);
         ArrayList<StockDaily> data = history.getYahooHistory();
+
+        return getMACD(data, startDate, endDate);
+    }
+
+    public static ArrayList<AverageDatum> getMACD(List<StockDaily> data, Date startDate, Date endDate){
+
         ArrayList<AverageDatum> result = new ArrayList<AverageDatum>();
 
         double shortRatio = (SHORT - 1) / (SHORT + 1);
@@ -59,8 +66,6 @@ public class MACD {
             dea = 2 / (M + 1) * diff + dea * (M - 1) / (M + 1);
             macd =trimDisplay(2 * (diff - dea));
 
-            StockDaily datum = data.get(i);
-
             Date date = data.get(i).getDate();
 
             if(date.compareTo(startDate) >= 0
@@ -74,7 +79,6 @@ public class MACD {
         }
         return result;
     }
-
 
     public static void main(String[] args)throws Exception{
 

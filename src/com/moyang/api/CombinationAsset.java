@@ -14,8 +14,8 @@ public class CombinationAsset {
 		for(String combi : combis){
 			int index = combi.indexOf(" ");
 			String stockId = combi.substring(0, index);
-			int sum = Integer.valueOf(combi.substring(index + 1));
-            total += SinaAPI.getPriceForStockId(stockId) * Double.valueOf(sum);
+			int sum = Integer.valueOf(combi.substring(index + 1)).intValue();
+            total += SinaAPI.getPriceForStockId(stockId) * Double.valueOf(sum).doubleValue();
 		}
 		
 		

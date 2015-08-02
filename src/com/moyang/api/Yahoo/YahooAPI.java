@@ -12,7 +12,7 @@ public class YahooAPI {
 
 	public static final String REQUEST_BASE = "http://table.finance.yahoo.com/table.csv?s=";
 	
-	public static String getYahooHistory(String stockId) {
+	public static String getHistory(String stockId) {
 		try{
      		return SimpleWebDownloader.getAsString(getBasicRequest(stockId));
 		} catch (Exception e) {
@@ -21,7 +21,7 @@ public class YahooAPI {
 
 	}
 
-	public static String getBasicRequest(String stockId){
+	static String getBasicRequest(String stockId){
 		String marketplace = MarketplaceUtil.getMarketplace(stockId);
 		String request = REQUEST_BASE + stockId;
 

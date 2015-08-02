@@ -53,7 +53,7 @@ YahooHistory history = new YahooHistory("600030");
 	public YahooHistory(String stockId) {
 		String path = getFilePath(stockId);
 		if(!new File(path).exists() || new File(path).length() == 0){
-			YahooAPI.writeYahooHistory(stockId, YahooAPI.getYahooHistory(stockId));
+			YahooAPI.writeYahooHistory(stockId, YahooAPI.getHistory(stockId));
 		}
 		String rawInput = FileUtil.getContent(getFilePath(stockId));
 		this.stockId = stockId;
