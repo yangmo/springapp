@@ -18,16 +18,17 @@ public class RecentMaxVolCriteria extends Criteria {
     }
 
     @Override
-    public boolean meetCriteria(YahooHistory history) {
-        int size = history.getYahooHistory().size();
+    public boolean meetCriteria(List<StockDaily> stockDailies) {
 
-        long recentVolume = history.getYahooHistory().get(size - 1).getVolume();
+        int size = stockDailies.size();
+
+        long recentVolume = stockDailies.get(size - 1).getVolume();
 
         if(size - recentDays <= 1){
             return false;
         }
 
-        List<StockDaily> list = history.getYahooHistory().subList(size - recentDays - 1, size - 1);
+        List<StockDaily> list = stockDailies.subList(size - recentDays - 1, size - 1);
 
         for(StockDaily datum : list){
             if(datum.getVolume() > recentVolume){
@@ -37,7 +38,8 @@ public class RecentMaxVolCriteria extends Criteria {
         return true;
     }
 
-    public String getDetail(YahooHistory history){
+    @Override
+    public String getDetail(List<StockDaily> stockDailies){
         return "";
     }
 }

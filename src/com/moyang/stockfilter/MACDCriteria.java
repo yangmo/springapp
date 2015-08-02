@@ -6,6 +6,7 @@ import com.moyang.api.Yahoo.YahooHistory;
 import com.moyang.model.AverageDatum;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by yangmo on 15-3-1.
@@ -20,10 +21,9 @@ public class MACDCriteria extends Criteria{
 
 
     @Override
-    public boolean meetCriteria(YahooHistory history) {
-        ArrayList<StockDaily> yahooList = history.getYahooHistory();
-        ArrayList<AverageDatum> macdList = MACD.getMACD(history.getStockId(), yahooList.get(0).getDate()
-                , yahooList.get(yahooList.size() - 1).getDate());
+    public boolean meetCriteria(List<StockDaily> stockDailies) {
+        ArrayList<AverageDatum> macdList = MACD.getMACD(stockDailies);
+
         if (macdList.get(macdList.size() - 1).getVal() <= 0) {
             return false;
         }
@@ -37,7 +37,8 @@ public class MACDCriteria extends Criteria{
         return false;
     }
 
-    public String getDetail(YahooHistory history){
-        return "" + history.getStockId();
+    @Override
+    public String getDetail(List<StockDaily> stockDailies){
+        return "";
     }
 }

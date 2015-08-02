@@ -3,6 +3,7 @@ package com.moyang.stockfilter;
 import com.moyang.api.AverageUtil;
 import com.moyang.api.Yahoo.YahooHistory;
 import com.moyang.common.Constants;
+import com.moyang.hibernate.StockDaily;
 import com.moyang.model.AverageDatum;
 
 import java.util.List;
@@ -23,14 +24,14 @@ public class SimilarKAverageCriteria extends Criteria{
     }
 
     @Override
-    public boolean meetCriteria(YahooHistory history) {
-        return getDiff(history) <= range;
+    public boolean meetCriteria(List<StockDaily> stockDailies) {
+        return getDiff(stockDailies) <= range;
     }
 
-    public double getDiff(YahooHistory history){
+    public double getDiff(List<StockDaily> stockDailies){
         List<AverageDatum> list = null;
         try {
-            list = AverageUtil.getKAverage(history, kAverage,Constants.DATE_FORMAT.parse(Constants.MOST_RECENT_TRADING_DAY),
+            list = AverageUtil.getKAverage(stockDailies, kAverage,Constants.DATE_FORMAT.parse(Constants.MOST_RECENT_TRADING_DAY),
                     Constants.DATE_FORMAT.parse(Constants.MOST_RECENT_TRADING_DAY));
         } catch (Throwable e) {
             return 1000.00;
@@ -38,13 +39,14 @@ public class SimilarKAverageCriteria extends Criteria{
 
         double average = list.get(0).getVal();
 
-        double cur = history.getYahooHistory().get(history.getYahooHistory().size()-1).getAdjClose();
+        double cur = stockDailies.get(stockDailies.size() - 1).getAdjClose();
         double diff = Math.abs(cur-average);
 
         return diff/cur;
     }
 
-    public String getDetail(YahooHistory history){
-        return "\t" + kAverage + ":" + Constants.DOUBLE_FORMAT.format(getDiff(history)) + "\t";
+    @Override
+    public String getDetail(List<StockDaily> stockDailies){
+        return "\t" + kAverage + ":" + Constants.DOUBLE_FORMAT.format(getDiff(stockDailies)) + "\t";
     }
 }

@@ -21,7 +21,7 @@ public class StockFilterParas {
     private String macdCriteria;
 
     public AndCriteria getAndCriteria(){
-        AndCriteria andCriteria = new AndCriteria();
+        AndCriteria andCriteria = new AndCriteria("");
         if(!StringUtils.isEmpty(highVolumeCriteria)){
             andCriteria.appendCriteria(new HighVolumeCriteria(highVolumeCriteria));
         }
@@ -71,12 +71,12 @@ public class StockFilterParas {
                 }
 
 
-                if(andCriteria.meetCriteria(history)){
+                if(andCriteria.meetCriteria(history.getYahooHistory())){
                     FilterResult filterResult = new FilterResult();
                     filterResult.setSerialNo(count++);
                     filterResult.setStockId(stockId);
                     filterResult.setStockName(URLEncoder.encode(StockNameUtil.getName(stockId), "UTF-8"));
-                    filterResult.setDetail(andCriteria.getDetail(history));
+                    filterResult.setDetail(andCriteria.getDetail(history.getYahooHistory()));
                     filterResult.setLink("http://xueqiu.com/S/"
                             + MarketplaceUtil.getMarketplace(stockId).toUpperCase() + stockId);
                     list.add(filterResult);

@@ -34,6 +34,11 @@ public class MACD {
         return getMACD(data, startDate, endDate);
     }
 
+    public static ArrayList<AverageDatum> getMACD(List<StockDaily> stockDailies) {
+        return getMACD(stockDailies, stockDailies.get(0).getDate()
+                , stockDailies.get(stockDailies.size() - 1).getDate());
+    }
+
     public static ArrayList<AverageDatum> getMACD(List<StockDaily> data, Date startDate, Date endDate){
 
         ArrayList<AverageDatum> result = new ArrayList<AverageDatum>();

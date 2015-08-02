@@ -21,7 +21,12 @@ public class AverageUtil {
     public static ArrayList<AverageDatum> getKAverage(YahooHistory history, int k, Date startDate, Date endDate)
     {
 
-        ArrayList<StockDaily> data = history.getYahooHistory();
+        return getKAverage(history.getYahooHistory(), k, startDate, endDate);
+    }
+
+    public static ArrayList<AverageDatum> getKAverage(List<StockDaily> data, int k, Date startDate, Date endDate)
+    {
+
         ArrayList<AverageDatum> kAverage = new ArrayList<AverageDatum>();
 
         double sum = 0;

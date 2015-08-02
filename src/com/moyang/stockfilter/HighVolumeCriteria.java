@@ -26,14 +26,14 @@ public class HighVolumeCriteria extends Criteria{
         times = Long.valueOf(contents[1]);
     }
 
-    private long computeRecentAverageVol(YahooHistory history){
-        int size = history.getYahooHistory().size();
-        if(!Constants.DATE_FORMAT.format(history.getYahooHistory().get(size - 1).getDate()).equals(Constants.MOST_RECENT_TRADING_DAY)){
+    private long computeRecentAverageVol(List<StockDaily> stockDailies){
+        int size = stockDailies.size();
+        if(!Constants.DATE_FORMAT.format(stockDailies.get(size - 1).getDate()).equals(Constants.MOST_RECENT_TRADING_DAY)){
             return 0;
         }
-        long recentVolume = history.getYahooHistory().get(size - 1).getVolume();
+        long recentVolume = stockDailies.get(size - 1).getVolume();
 
-        List<StockDaily> list = history.getYahooHistory().subList(size-recentDays-1, size - 1);
+        List<StockDaily> list = stockDailies.subList(size - recentDays - 1, size - 1);
 
         long total = 0;
         for(StockDaily datum : list){
@@ -47,8 +47,8 @@ public class HighVolumeCriteria extends Criteria{
 
 
     @Override
-    public boolean meetCriteria(YahooHistory history) {
-        long actual = computeRecentAverageVol(history);
+    public boolean meetCriteria(List<StockDaily> stockDailies) {
+        long actual = computeRecentAverageVol(stockDailies);
         if(actual >= times){
             return true;
         }
@@ -56,12 +56,12 @@ public class HighVolumeCriteria extends Criteria{
     }
 
 
-    public String getDetail(YahooHistory history){
-        return "\t" + computeRecentAverageVol(history) + "\t";
+    public String getDetail(List<StockDaily> stockDailies){
+        return "\t" + computeRecentAverageVol(stockDailies) + "\t";
     }
 
     public static void main(String[] args){
         HighVolumeCriteria criteria = new HighVolumeCriteria("13,2");
-        System.out.println(criteria.computeRecentAverageVol(new YahooHistory("000975")));
+        System.out.println(criteria.computeRecentAverageVol(new YahooHistory("000975").getYahooHistory()));
     }
 }

@@ -1,7 +1,9 @@
 package com.moyang.stockfilter;
 
-import com.moyang.api.Yahoo.YahooHistory;
+import com.moyang.hibernate.StockDaily;
 
+import java.util.ArrayList;
+import java.util.List;
 /**
  * Created by yangmo on 15-2-5.
  */
@@ -12,7 +14,7 @@ public abstract class Criteria {
         this.context = context;
     }
 
-    public abstract boolean meetCriteria(YahooHistory history);
-    public abstract String getDetail(YahooHistory history);
+    public abstract boolean meetCriteria(List<StockDaily> stockDailies);
+    public abstract String getDetail(List<StockDaily> stockDailies);
 
 }
