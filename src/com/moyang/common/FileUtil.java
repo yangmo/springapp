@@ -133,25 +133,36 @@ public class FileUtil {
             }
         }
     }
-    
-    public static void main(String[] args) throws Exception{
-    	String rawInput = FileUtil.getContent("com/moyang/files/rawInput.txt");
-    	System.out.println(rawInput);
-    	
-    	String [] list = rawInput.split("\\)");
-    	StringBuffer sb = new StringBuffer();
-    	int count = 0;
-    	for(String tmp : list){
-    		int index = tmp.indexOf("(");
-    		if(index < 0){
-    			break;
-    		}
-    		count ++;
-    		sb.append(tmp.substring(index + 1, tmp.length())  + "\t" + tmp.substring(0, index).trim()+"\n");
-    		
+ 
+    public static File[] getFilesUnderDir(String dir) {
+    	File root = new File(dir);
+    	if(!root.isDirectory()) {
+    		return null;
     	}
-    	FileUtil.writeToFile("com/moyang/files/Stocks.txt", sb.toString());
-    	System.out.println(count);
+    	return root.listFiles();
     }
+    
+    public static void main(String[] args) throws Exception {
+        String rawInput = FileUtil.getContent("com/moyang/files/rawInput.txt");
+        System.out.println(rawInput);
+
+        String[] list = rawInput.split("\\)");
+        StringBuffer sb = new StringBuffer();
+        int count = 0;
+        for (String tmp : list) {
+            int index = tmp.indexOf("(");
+            if (index < 0) {
+                break;
+            }
+            count++;
+            sb.append(tmp.substring(index + 1, tmp.length()) + "\t" + tmp.substring(0, index).trim() + "\n");
+
+        }
+        FileUtil.writeToFile("com/moyang/files/Stocks.txt", sb.toString());
+        System.out.println(count);
+
+    }
+
+
 }
 

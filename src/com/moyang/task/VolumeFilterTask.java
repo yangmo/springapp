@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class VolumeFilterTask {
 
+    public static int count = 0;
 
     public static boolean isRecentRisingDay(String stockId)throws Exception{
         YahooHistory history = new YahooHistory(stockId);
@@ -23,19 +24,16 @@ public class VolumeFilterTask {
 
     }
     public static void run(){
-        int count = 0;
         AndCriteria andCriteria = new AndCriteria("");
-        andCriteria.appendCriteria(new HighVolumeCriteria("12,2"));
+        // andCriteria.appendCriteria(new HighVolumeCriteria("12,2"));
         //   andCriteria.appendCriteria(new RecentMaxVolCriteria("13"));
         //andCriteria.appendCriteria(new OversoldCriteria("20,0.21"));
         // andCriteria.appendCriteria(new SimilarKAverageCriteria("30,0.2"));
         //         .appendCriteria(new SimilarKAverageCriteria("5,0.05"));
-        // andCriteria.appendCriteria(new MACDCriteria("1"));
+        andCriteria.appendCriteria(new MACDCriteria("1"));
 
         for(String stockId : StockNameUtil.getAllStockIds()) {
-            System.out.println(count++ + "\t" + stockId);
             YahooHistory history = new YahooHistory(stockId);
-            System.out.println(history.getYahooHistory().size());
             filter(andCriteria, stockId, history.getYahooHistory());
         }
     }
@@ -43,7 +41,7 @@ public class VolumeFilterTask {
         try{
 
             if(andCriteria.meetCriteria(stockDailies)){
-                System.out.println(stockId  +"\t" + StockNameUtil.getName(stockId) + andCriteria.getDetail(stockDailies));
+                System.out.println(count++ + "\t" + stockId  +"\t" + StockNameUtil.getName(stockId) + andCriteria.getDetail(stockDailies));
             }
         } catch (Exception e) {
 

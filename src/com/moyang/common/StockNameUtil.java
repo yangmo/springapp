@@ -32,10 +32,6 @@ public class StockNameUtil {
 
 	}
 
-	public static boolean isValid(String stockId){
-		return STOCK_NAME_MAP.containsKey(stockId);
-	}
-
 	public static void main(String[] args){
 		init();
 	}

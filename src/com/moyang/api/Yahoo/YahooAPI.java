@@ -110,6 +110,7 @@ public class YahooAPI {
 			throws Exception{
 
 		String request = getBasicRequest(stockId);
+
 		String [] sArr = startStr.split("-");
 		request+="&a="+DateUtil.toMonthInt(sArr[1])+"&b="+sArr[2]+"&c="+sArr[0];
 		String [] eArr = endStr.split("-");

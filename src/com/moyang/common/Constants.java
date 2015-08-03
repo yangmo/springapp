@@ -3,7 +3,7 @@ package com.moyang.common;
 import java.text.SimpleDateFormat;
 import java.text.DecimalFormat;
 public class Constants {
-    public static final String MOST_RECENT_TRADING_DAY = "2015-05-29";
+    public static final String MOST_RECENT_TRADING_DAY = "2015-07-31";
 
     /**
 	 * Constants for MarketPlace
@@ -26,7 +26,7 @@ public class Constants {
 
     public static final String OS_NAME = System.getProperty("os.name");
     // Different base USR directory for Mac and Linux
-    public static final String USR = OS_NAME.contains("Mac") ? "/Usr/local/tomcat" : "/usr/local/apache-tomcat-6.0.43";
+    public static final String USR = "/usr/local/apache-tomcat-6.0.43";
     /**
      *
      */

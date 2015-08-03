@@ -14,6 +14,10 @@ public class StockDaily implements Serializable{
 	private double close;
 	private long volume;
 	private double adjClose;
+    private double change;
+	private long money;
+	private long tradedMarketValue;
+	private long marketValue;
 
 	public StockDaily(){
 
@@ -43,7 +47,11 @@ public class StockDaily implements Serializable{
 				+ Constants.DOUBLE_FORMAT.format(high)+","
 				+ Constants.DOUBLE_FORMAT.format(low)+","
 		        + Constants.DOUBLE_FORMAT.format(close)+","
-				+ volume +","+ Constants.DOUBLE_FORMAT.format(adjClose);
+				+ volume +","+ Constants.DOUBLE_FORMAT.format(adjClose) + ","
+				+ getChange() + ","
+				+ getMoney() + ","
+				+ getTradedMarketValue() + ","
+				+ getMarketValue() + ",";
 	}
 
 	public String getStockId(){
@@ -90,13 +98,35 @@ public class StockDaily implements Serializable{
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
 	public long getVolume() {
 		return volume;
 	}
-
 	public void setVolume(long volume) {
 		this.volume = volume;
 	}
-	
+	public void setChange(double change) {
+		this.change = change;
+	}
+	public double getChange() {
+		return change;
+	}
+	public void setMoney(long money) {
+		this.money = money;
+	}
+	public long getMoney() {
+		return money;
+	}
+	public long getTradedMarketValue() {
+		return tradedMarketValue;
+	}
+	public void setTradedMarketValue(long tradedMarketValue) {
+		this.tradedMarketValue = tradedMarketValue;
+	}
+	public long getMarketValue() {
+		return marketValue;
+	}
+	public void setMarketValue(long marketValue) {
+		this.marketValue = marketValue;
+	}
+
 }
