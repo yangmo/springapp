@@ -1,6 +1,7 @@
 package com.moyang.task;
 
 import com.moyang.api.Yahoo.YahooHistory;
+import com.moyang.api.YuCeZhe.YucezheAPI;
 import com.moyang.common.StockNameUtil;
 import com.moyang.common.StockUtil;
 import com.moyang.hibernate.StockDaily;
@@ -25,16 +26,20 @@ public class VolumeFilterTask {
     }
     public static void run(){
         AndCriteria andCriteria = new AndCriteria("");
-        // andCriteria.appendCriteria(new HighVolumeCriteria("12,2"));
+         andCriteria.appendCriteria(new HighVolumeCriteria("12,2"));
         //   andCriteria.appendCriteria(new RecentMaxVolCriteria("13"));
         //andCriteria.appendCriteria(new OversoldCriteria("20,0.21"));
         // andCriteria.appendCriteria(new SimilarKAverageCriteria("30,0.2"));
         //         .appendCriteria(new SimilarKAverageCriteria("5,0.05"));
-        andCriteria.appendCriteria(new MACDCriteria("1"));
+        //andCriteria.appendCriteria(new MACDCriteria("1"));
 
         for(String stockId : StockNameUtil.getAllStockIds()) {
-            YahooHistory history = new YahooHistory(stockId);
-            filter(andCriteria, stockId, history.getYahooHistory());
+            try {
+                List<StockDaily> stockDailies = YucezheAPI.getStockDailies(stockId);
+                filter(andCriteria, stockId, stockDailies);
+            } catch (Exception e) {
+
+            }
         }
     }
     public static void filter(AndCriteria andCriteria, String stockId, List<StockDaily> stockDailies) {

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 /**
@@ -142,24 +143,19 @@ public class FileUtil {
     	return root.listFiles();
     }
     
-    public static void main(String[] args) throws Exception {
-        String rawInput = FileUtil.getContent("com/moyang/files/rawInput.txt");
-        System.out.println(rawInput);
-
-        String[] list = rawInput.split("\\)");
-        StringBuffer sb = new StringBuffer();
-        int count = 0;
-        for (String tmp : list) {
-            int index = tmp.indexOf("(");
-            if (index < 0) {
-                break;
-            }
-            count++;
-            sb.append(tmp.substring(index + 1, tmp.length()) + "\t" + tmp.substring(0, index).trim() + "\n");
-
+    public static void append(String path, String content) {
+        try {
+            FileWriter writer = new FileWriter(path, true);
+            writer.write(content);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        FileUtil.writeToFile("com/moyang/files/Stocks.txt", sb.toString());
-        System.out.println(count);
+    }
+
+
+    public static void main(String[] args) throws Exception {
+        append("/tmp/test.txt" , "\nsdfsdf");
 
     }
 

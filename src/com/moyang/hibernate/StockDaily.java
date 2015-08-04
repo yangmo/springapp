@@ -43,7 +43,8 @@ public class StockDaily implements Serializable{
 
 	@Override
 	public String toString(){
-		return Constants.DATE_FORMAT.format(date) +","+ Constants.DOUBLE_FORMAT.format(open)+","
+		return  stockId + ","
+				+ Constants.DATE_FORMAT.format(date) +","+ Constants.DOUBLE_FORMAT.format(open)+","
 				+ Constants.DOUBLE_FORMAT.format(high)+","
 				+ Constants.DOUBLE_FORMAT.format(low)+","
 		        + Constants.DOUBLE_FORMAT.format(close)+","

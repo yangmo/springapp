@@ -1,8 +1,6 @@
 package com.moyang.api.YuCeZhe;
 
-import com.moyang.common.Constants;
 import com.moyang.common.FileUtil;
-import com.moyang.common.JsonSerializer;
 import com.moyang.common.MarketplaceUtil;
 import com.moyang.hibernate.StockDaily;
 
@@ -13,15 +11,8 @@ import java.util.*;
  */
 public class YucezheAPI {
 
-    private static final String BASE = "/usr/all_trading_data/stock data/";
-    static String getPath(String stockId) {
-        String marketPrefix = MarketplaceUtil.getMarketplace(stockId);
-        return BASE + marketPrefix + stockId + ".csv";
-    }
-
-
     public static List<StockDaily> getStockDailies(String stockId) {
-        String content = FileUtil.getContent(getPath(stockId));
+        String content = FileUtil.getContent(YucezheCommonUtil.getDataPath(stockId));
         List<StockDaily> stockDailies = new ArrayList<StockDaily>();
 
         String[] lines = content.split("\n");
@@ -32,9 +23,6 @@ public class YucezheAPI {
         for (int i = 1; i < lines.length; i++) {
             stockDailies.add(YucezheCommonUtil.getStockDailyFromLine(lines[i]));
         }
-
-
-        Collections.reverse(stockDailies);
 
         return stockDailies;
     }
@@ -72,6 +60,6 @@ public class YucezheAPI {
 
     public static void main(String[] args) {
 
-        System.out.println(JsonSerializer.serialize(getStockDailies("002322").get(0)));
+        System.out.println(getStockDailies("002322").get(0));
     }
 }

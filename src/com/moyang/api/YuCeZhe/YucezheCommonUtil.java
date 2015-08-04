@@ -1,15 +1,21 @@
 package com.moyang.api.YuCeZhe;
 
 import com.moyang.common.Constants;
+import com.moyang.common.MarketplaceUtil;
 import com.moyang.hibernate.StockDaily;
 
 import java.util.DoubleSummaryStatistics;
+
+import org.springframework.util.StringUtils;
 
 /**
  * Created by moyang on 15/8/3.
  */
 public class YucezheCommonUtil {
-
+    static String getDataPath(String stockId) {
+        String marketPrefix = MarketplaceUtil.getMarketplace(stockId);
+        return YucezheConstants.DATA_BASE + marketPrefix + stockId + ".csv";
+    }
 
     /**
      * Fail to parse Long if it is something like 20239900.0 or 2.3353e+11
@@ -29,13 +35,21 @@ public class YucezheCommonUtil {
         return Long.valueOf(volume);
     }
 
+    static String getStockIdFromLine(String line) {
+    	
+        String[] components = line.split(",");
+        return components[0].substring(2);
+    }
 
     static StockDaily getStockDailyFromLine(String line) {
+    	if(StringUtils.isEmpty(line)) {
+    		return null;
+    	}
         StockDaily stockDaily = new StockDaily();
 
         try {
             String[] components = line.split(",");
-
+            stockDaily.setStockId(getStockIdFromLine(line));
             stockDaily.setDate(Constants.DATE_FORMAT.parse(components[1]));
             stockDaily.setOpen(Double.valueOf(components[2]).doubleValue());
             stockDaily.setHigh(Double.valueOf(components[3]).doubleValue());
