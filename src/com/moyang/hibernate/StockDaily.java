@@ -16,9 +16,11 @@ public class StockDaily implements Serializable{
 	private double adjClose;
     private double change;
 	private long money;
+	private double turnover;
 	private long tradedMarketValue;
 	private long marketValue;
-
+    private double pe;
+    private double pb;
 	public StockDaily(){
 
 	}
@@ -129,5 +131,22 @@ public class StockDaily implements Serializable{
 	public void setMarketValue(long marketValue) {
 		this.marketValue = marketValue;
 	}
-
+    public double getPE() {
+    	return pe;
+    }
+    public void setPE(double pe) {
+    	this.pe = pe;
+    }
+	public double getPB() {
+		return pb;
+	}
+	public void setPB(double pb) {
+		this.pb = pb;
+	}
+	public double getTurnover() {
+		return turnover;
+	}
+	public void setTurnover(double turnover) {
+		this.turnover = turnover;
+	}
 }
