@@ -60,12 +60,15 @@ public class YucezheCommonUtil {
             stockDaily.setMoney(Double.valueOf(components[8]).longValue());
             stockDaily.setTradedMarketValue(Double.valueOf(components[9]).longValue());
             stockDaily.setMarketValue(Double.valueOf(components[10]).longValue());
-            stockDaily.setTurnover(Double.valueOf(components[11]));
+            stockDaily.setTurnover(StringUtils.isEmpty(components[11])? 0.0 : Double.valueOf(components[11]));
             stockDaily.setAdjClose(Double.valueOf(components[12]));
-            if(components.length < 14) {
+            if(components.length < 16) {
             	return stockDaily;
             }
             stockDaily.setPE(Double.valueOf(components[15]));
+            if(components.length < 19) {
+                return stockDaily;
+            }
             stockDaily.setPB(Double.valueOf(components[18]));
         } catch (Exception e) {
             throw new RuntimeException(e);

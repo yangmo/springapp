@@ -97,7 +97,8 @@ public class YuchezheFeeder {
 			    List<StockDaily> stockDailies = YucezheAPI.getStockDailies(stockId);
 			    StockDaily mostRecent = stockDailies.get(stockDailies.size() - 1);
 			    if(!feed.getDate().after(mostRecent.getDate())) {
-				    throw new RuntimeException("Already Updated!");
+                    throw new RuntimeException("Already Updated!");
+
 			    }
 			
 		     	String stockDataPath = YucezheCommonUtil.getDataPath(stockId);
@@ -105,14 +106,14 @@ public class YuchezheFeeder {
                 removeEntersInFile(stockDataPath);
 			    System.out.println("Successfully Feeded " + stockId + " " + Constants.DATE_FORMAT.format(feed.getDate()));
 			} catch (Throwable t) {
-				System.out.println(t.getLocalizedMessage());
-			}
+                System.out.println(t.getLocalizedMessage());
+ 			}
 		}
 		printMissingStockIds(date);
 	}
 	
 	public static void main(String[] args) {
-		//feedAll("20150804");
-		printMissingStockIds("20150804");
+		feedAll("20150805");
+		//printMissingStockIds("20150805");
 	}
 }
