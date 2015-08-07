@@ -1,5 +1,6 @@
 package com.moyang.hibernate;
 
+import com.moyang.model.StockDaily;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

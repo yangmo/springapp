@@ -7,7 +7,7 @@ import java.util.Set;
 import com.moyang.common.Constants;
 import com.moyang.common.FileUtil;
 import com.moyang.common.StockNameUtil;
-import com.moyang.hibernate.StockDaily;
+import com.moyang.model.StockDaily;
 
 import org.springframework.util.StringUtils;
 
@@ -113,7 +113,7 @@ public class YuchezheFeeder {
 	}
 	
 	public static void main(String[] args) {
-		feedAll("20150805");
+		feedAll("20150807");
 		//printMissingStockIds("20150805");
 	}
 }

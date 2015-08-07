@@ -23,7 +23,7 @@ import com.moyang.model.canvasJS.Data;
 import com.moyang.model.canvasJS.DataPoints;
 
 import com.moyang.api.Yahoo.YahooAPI;
-import com.moyang.hibernate.StockDaily;
+import com.moyang.model.StockDaily;
 import com.moyang.api.Converter;
 import com.moyang.model.QueryParas;
 @Scope("session")

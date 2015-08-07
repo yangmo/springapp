@@ -2,7 +2,7 @@ package com.moyang.historyrepeat;
 
 import java.util.List;
 
-import com.moyang.hibernate.StockDaily;
+import com.moyang.model.StockDaily;
 import com.moyang.api.Yahoo.YahooHistory;
 
 public class PriceInterval {

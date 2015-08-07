@@ -3,7 +3,7 @@ package com.moyang.api;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.moyang.hibernate.StockDaily;
+import com.moyang.model.StockDaily;
 import com.moyang.common.Constants;
 import com.moyang.common.MarketplaceUtil;
 import com.moyang.common.RegUtil;

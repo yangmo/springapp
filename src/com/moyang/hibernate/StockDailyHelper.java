@@ -1,8 +1,7 @@
 package com.moyang.hibernate;
 
+import com.moyang.model.StockDaily;
 import org.hibernate.Criteria;
-import org.hibernate.Hibernate;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 

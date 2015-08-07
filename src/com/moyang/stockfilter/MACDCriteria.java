@@ -1,8 +1,8 @@
 package com.moyang.stockfilter;
 
 import com.moyang.api.MACD;
-import com.moyang.hibernate.StockDaily;
-import com.moyang.api.Yahoo.YahooHistory;
+import com.moyang.common.Constants;
+import com.moyang.model.StockDaily;
 import com.moyang.model.AverageDatum;
 
 import java.util.ArrayList;
@@ -39,6 +39,6 @@ public class MACDCriteria extends Criteria{
 
     @Override
     public String getDetail(List<StockDaily> stockDailies){
-        return "";
+        return "\tChange: " + Constants.DOUBLE_FORMAT.format(stockDailies.get(stockDailies.size() - 1).getChange());
     }
 }

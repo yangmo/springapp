@@ -1,8 +1,7 @@
 package com.moyang.api.YuCeZhe;
 
 import com.moyang.common.FileUtil;
-import com.moyang.common.MarketplaceUtil;
-import com.moyang.hibernate.StockDaily;
+import com.moyang.model.StockDaily;
 
 import java.util.*;
 

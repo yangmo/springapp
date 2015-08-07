@@ -5,7 +5,7 @@
 
 
 <hibernate-mapping>
-    <class name="com.moyang.hibernate.StockDaily" table="stock_daily">
+    <class name="com.moyang.model.StockDaily" table="stock_daily">
         <composite-id>
             <key-property name="stockId" column="stockid" type="string"></key-property>
             <key-property name="date" column="date" type="date"></key-property>

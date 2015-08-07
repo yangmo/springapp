@@ -1,9 +1,8 @@
 package com.moyang.stockfilter;
 
 import com.moyang.api.AverageUtil;
-import com.moyang.api.Yahoo.YahooHistory;
 import com.moyang.common.Constants;
-import com.moyang.hibernate.StockDaily;
+import com.moyang.model.StockDaily;
 import com.moyang.model.AverageDatum;
 
 import java.util.List;

@@ -4,7 +4,7 @@ import com.moyang.model.SnapShoot;
 import com.moyang.api.Yahoo.YahooHistory;
 import com.moyang.common.Constants;
 import com.moyang.common.StockNameUtil;
-import com.moyang.hibernate.StockDaily;
+import com.moyang.model.StockDaily;
 
 import java.util.ArrayList;
 import java.util.List;

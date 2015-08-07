@@ -1,16 +1,13 @@
 package com.moyang.dataparser;
 
 import com.moyang.api.Yahoo.YahooHistory;
-import com.moyang.common.FileUtil;
 import com.moyang.common.StockNameUtil;
-import com.moyang.hibernate.StockDaily;
+import com.moyang.model.StockDaily;
 import com.moyang.hibernate.StockInfo;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-
-import java.io.File;
 
 /**
  * Created by yangmo on 15-5-2.

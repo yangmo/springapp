@@ -3,7 +3,7 @@ package com.moyang.stockfilter;
 import java.util.List;
 
 import com.moyang.common.Constants;
-import com.moyang.hibernate.StockDaily;
+import com.moyang.model.StockDaily;
 
 public class TurnoverCriteria extends Criteria{
 

@@ -1,6 +1,6 @@
 package com.moyang.api;
 
-import com.moyang.hibernate.StockDaily;
+import com.moyang.model.StockDaily;
 import com.moyang.api.Yahoo.YahooHistory;
 import com.moyang.common.Constants;
 import com.moyang.model.AverageDatum;

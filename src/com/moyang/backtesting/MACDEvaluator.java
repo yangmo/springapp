@@ -2,7 +2,7 @@ package com.moyang.backtesting;
 
 import com.moyang.api.MACD;
 import com.moyang.common.Constants;
-import com.moyang.hibernate.StockDaily;
+import com.moyang.model.StockDaily;
 import com.moyang.api.Yahoo.YahooHistory;
 import com.moyang.common.DateUtil;
 import com.moyang.model.AverageDatum;

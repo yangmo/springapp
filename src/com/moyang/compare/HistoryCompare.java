@@ -1,6 +1,6 @@
 package com.moyang.compare;
 
-import com.moyang.hibernate.StockDaily;
+import com.moyang.model.StockDaily;
 
 import java.util.ArrayList;
 import java.util.List;

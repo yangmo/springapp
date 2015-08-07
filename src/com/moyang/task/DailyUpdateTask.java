@@ -5,7 +5,7 @@ import com.moyang.api.Yahoo.YahooHistory;
 import com.moyang.common.Constants;
 import com.moyang.common.DateUtil;
 import com.moyang.common.StockNameUtil;
-import com.moyang.hibernate.StockDaily;
+import com.moyang.model.StockDaily;
 
 import java.util.*;
 

@@ -1,7 +1,5 @@
 package com.moyang.model;
 
-import com.moyang.hibernate.StockDaily;
-
 import java.util.List;
 
 /**

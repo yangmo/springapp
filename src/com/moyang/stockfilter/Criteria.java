@@ -1,8 +1,7 @@
 package com.moyang.stockfilter;
 
-import com.moyang.hibernate.StockDaily;
+import com.moyang.model.StockDaily;
 
-import java.util.ArrayList;
 import java.util.List;
 /**
  * Created by yangmo on 15-2-5.

@@ -1,7 +1,6 @@
 package com.moyang.stockfilter;
 
-import com.moyang.hibernate.StockDaily;
-import com.moyang.api.Yahoo.YahooHistory;
+import com.moyang.model.StockDaily;
 
 import java.util.List;
 

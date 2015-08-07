@@ -1,4 +1,4 @@
-package com.moyang.hibernate;
+package com.moyang.model;
 
 import com.moyang.common.Constants;
 

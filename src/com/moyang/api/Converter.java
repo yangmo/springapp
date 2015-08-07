@@ -2,7 +2,7 @@ package com.moyang.api;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import com.moyang.hibernate.StockDaily;
+import com.moyang.model.StockDaily;
 import com.moyang.model.canvasJS.DataPoint;
 import com.moyang.model.AverageDatum;
 

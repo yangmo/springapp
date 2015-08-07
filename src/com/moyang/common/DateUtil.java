@@ -1,6 +1,6 @@
 package com.moyang.common;
 
-import com.moyang.hibernate.StockDaily;
+import com.moyang.model.StockDaily;
 import com.moyang.api.Yahoo.YahooHistory;
 
 import java.text.ParseException;

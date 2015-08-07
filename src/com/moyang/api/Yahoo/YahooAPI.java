@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.moyang.common.*;
 import com.moyang.common.downloader.SimpleWebDownloader;
-import com.moyang.hibernate.StockDaily;
+import com.moyang.model.StockDaily;
 
 public class YahooAPI {
 

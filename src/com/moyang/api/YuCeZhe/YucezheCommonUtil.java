@@ -2,9 +2,7 @@ package com.moyang.api.YuCeZhe;
 
 import com.moyang.common.Constants;
 import com.moyang.common.MarketplaceUtil;
-import com.moyang.hibernate.StockDaily;
-
-import java.util.DoubleSummaryStatistics;
+import com.moyang.model.StockDaily;
 
 import org.springframework.util.StringUtils;
 
