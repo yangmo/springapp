@@ -14,7 +14,7 @@ public class StockDailyHelper {
     public static List<StockDaily> getStockDaily(String stockId){
         Session session = HibernateHelper.getSession();
         Criteria criteria = session.createCriteria(StockDaily.class);
-        criteria.add(Restrictions.eq("stockId", stockId));
+        criteria.add(Restrictions.eq("id", stockId));
         return criteria.list();
     }
 

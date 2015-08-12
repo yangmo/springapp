@@ -5,17 +5,9 @@ import com.moyang.common.Constants;
 import java.io.Serializable;
 import java.util.Date;
 
-public class StockDaily implements Serializable{
-	private String stockId;
-	private Date date;
-	private double open;
-	private double high;
-	private double low;
-	private double close;
-	private long volume;
+public class StockDaily extends Daily implements Serializable {
+
 	private double adjClose;
-    private double change;
-	private long money;
 	private double turnover;
 	private long tradedMarketValue;
 	private long marketValue;
@@ -25,8 +17,8 @@ public class StockDaily implements Serializable{
 
 	}
 
-	public StockDaily(String stockId, String msg) {
-		this.stockId = stockId;
+	public StockDaily(String id, String msg) {
+		this.id = id;
 
 		String[] components = msg.split(",");
 		try {
@@ -45,7 +37,7 @@ public class StockDaily implements Serializable{
 
 	@Override
 	public String toString(){
-		return  stockId + ","
+		return  id + ","
 				+ Constants.DATE_FORMAT.format(date) +","+ Constants.DOUBLE_FORMAT.format(open)+","
 				+ Constants.DOUBLE_FORMAT.format(high)+","
 				+ Constants.DOUBLE_FORMAT.format(low)+","
@@ -57,13 +49,7 @@ public class StockDaily implements Serializable{
 				+ getMarketValue() + ",";
 	}
 
-	public String getStockId(){
-		return stockId;
-	}
 
-	public void setStockId(String stockId){
-		this.stockId = stockId;
-	}
 
 	public double getAdjClose() {
 		return adjClose;
@@ -71,54 +57,7 @@ public class StockDaily implements Serializable{
 	public void setAdjClose(double adjClose) {
 		this.adjClose = adjClose;
 	}
-	public double getClose() {
-		return close;
-	}
-	public void setClose(double close) {
-		this.close = close;
-	}
-	public double getLow() {
-		return low;
-	}
-	public void setLow(double low) {
-		this.low = low;
-	}
-	public double getHigh() {
-		return high;
-	}
-	public void setHigh(double high) {
-		this.high = high;
-	}
-	public double getOpen() {
-		return open;
-	}
-	public void setOpen(double open) {
-		this.open = open;
-	}
-	public Date getDate() {
-		return date;
-	}
-	public void setDate(Date date) {
-		this.date = date;
-	}
-	public long getVolume() {
-		return volume;
-	}
-	public void setVolume(long volume) {
-		this.volume = volume;
-	}
-	public void setChange(double change) {
-		this.change = change;
-	}
-	public double getChange() {
-		return change;
-	}
-	public void setMoney(long money) {
-		this.money = money;
-	}
-	public long getMoney() {
-		return money;
-	}
+
 	public long getTradedMarketValue() {
 		return tradedMarketValue;
 	}

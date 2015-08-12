@@ -47,7 +47,7 @@ public class YucezheCommonUtil {
 
         try {
             String[] components = line.split(",");
-            stockDaily.setStockId(getStockIdFromLine(line));
+            stockDaily.setId(getStockIdFromLine(line));
             stockDaily.setDate(Constants.DATE_FORMAT.parse(components[1]));
             stockDaily.setOpen(Double.valueOf(components[2]).doubleValue());
             stockDaily.setHigh(Double.valueOf(components[3]).doubleValue());

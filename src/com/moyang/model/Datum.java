@@ -1,4 +1,4 @@
-package com.moyang.api;
+package com.moyang.model;
 
 import java.util.Date;
 

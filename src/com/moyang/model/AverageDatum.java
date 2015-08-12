@@ -1,7 +1,5 @@
 package com.moyang.model;
 
-import com.moyang.api.Datum;
-
 import java.util.Date;
 
 /**
