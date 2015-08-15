@@ -5,8 +5,8 @@ import com.moyang.api.YuCeZhe.YucezheAPI;
 import com.moyang.common.StockNameUtil;
 import com.moyang.model.StockDaily;
 import com.moyang.stockfilter.AndCriteria;
-import com.moyang.stockfilter.MACDCriteria;
-import com.moyang.stockfilter.PECriteria;
+import com.moyang.stockfilter.*;
+import com.moyang.stockfilter.HighVolumeCriteria;
 
 import java.util.List;
 
@@ -28,14 +28,14 @@ public class VolumeFilterTask {
     public static void run(){
         AndCriteria andCriteria = new AndCriteria("");
         // andCriteria.appendCriteria(new HighVolumeCriteria("12,2"));
-        //   andCriteria.appendCriteria(new RecentMaxVolCriteria("13"));
+        // andCriteria.appendCriteria(new RecentMaxVolCriteria("13"));
         // andCriteria.appendCriteria(new OversoldCriteria("20,0.31"));
-        // andCriteria.appendCriteria(new SimilarKAverageCriteria("30,0.03"));
+        andCriteria.appendCriteria(new SimilarKAverageCriteria("30,0.03"));
         //         .appendCriteria(new SimilarKAverageCriteria("5,0.05"));
         andCriteria.appendCriteria(new PECriteria("50"));
         // andCriteria.appendCriteria(new PBCriteria("1.6"));
-        // andCriteria.appendCriteria(new TurnoverCriteria("0.05"));
-        andCriteria.appendCriteria(new MACDCriteria("1"));
+        // andCriteria.appendCriteria(new TurnoverCriteria("0.20"));
+        // andCriteria.appendCriteria(new MACDCriteria("1"));
         
         for(String stockId : StockNameUtil.getAllStockIds()) {
             try {

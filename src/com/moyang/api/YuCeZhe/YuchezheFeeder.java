@@ -113,7 +113,7 @@ public class YuchezheFeeder {
 	}
 	
 	public static void main(String[] args) {
-		feedAll("20150811");
+		feedAll("20150814");
 		//printMissingStockIds("20150805");
 	}
 }
